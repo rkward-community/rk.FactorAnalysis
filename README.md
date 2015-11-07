@@ -2,6 +2,8 @@
 
 This R package provides a GUI to conduct principal component and factor analysis.
 
+![Parallel analysis (Horn)](/inst/screenshots/parallel_analysis.png?raw=true "rk.FactorAnalysis: Parallel analysis")
+
 It is a plugin package for [RKWard](https://rkward.kde.org), a powerful GUI and IDE for [R](https://r-project.org),
 and will **only work in conjunction with RKWard**. However, RKWard is free software, please
 [check it out](https://rkward.kde.org).
