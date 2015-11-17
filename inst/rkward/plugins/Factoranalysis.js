@@ -144,7 +144,7 @@ function printout(){
   comment("For printout, highlight loadings", "  ");
   echo("\tidx.load <- FA.load >= " + cutoff + "\n  FA.load.print <- digits(FA.load)\n  FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")\n  FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)\n");
   comment("Append communality and uniqueness", "  ");
-  echo("\tFA.load.print <- cbind(FA.load.print,\n    \"communality\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),\n    \"uniqueness\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n");
+  echo("\tFA.load.print <- cbind(FA.load.print,\n\t\t" + i18n("communality") + "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\")\n\t\t" + i18n("uniqueness") + "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n");
   comment("Append sum of squared loadings", "  ");
   if(isObrot) {
     echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n");  
@@ -152,7 +152,7 @@ function printout(){
     echo("\tFA.s2load <- colSums(FA.results$loadings^2)\n");  
   }
   comment("Variance explained", "  ");
-  echo("\tFA.varExp <- 100 * FA.s2load / FA.load.dim[1]\n  FA.load.print <- rbind(FA.load.print,\n    \"Sum of squared loadings\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.s2load), \"</span>\", sep=\"\"),\n    digits(sum(FA.s2load)), \"\"),\n    \"Variance explained (%)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.varExp), \"</span>\", sep=\"\"), \"\", \"\"),\n    \"Variance explained (cum %)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))\n");
+  echo("\tFA.varExp <- 100 * FA.s2load / FA.load.dim[1]\n  FA.load.print <- rbind(FA.load.print,\n\t\t" + i18n("Sum of squared loadings") + "=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.s2load), \"</span>\", sep=\"\"),\n    digits(sum(FA.s2load)), \"\"),\n\t\t" + i18n("Variance explained (%)") + "=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.varExp), \"</span>\", sep=\"\"), \"\", \"\"),\n\t\t" + i18n("Variance explained (cum %)") + "=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))\n");
   comment("Finally, make it a data.frame", "  ");
   echo("\tFA.load.print <- data.frame(FA.load.print, stringsAsFactors=FALSE)\n");
   if(isObrot) {
@@ -160,31 +160,32 @@ function printout(){
     echo("\tcomp.corr <- digits(FA.results$Phi)\n  dimnames(comp.corr) <- list(FA.load.names[[2]],FA.load.names[[2]])\n");  
   } else {}
   comment("Prepare score*factors matrix for printout", "  ");
-  echo("\tscfc.corr <- data.frame(rbind(\n    \"Correlation of scores with factors\"=digits(sqrt(FA.results$R2)),\n    \"Multiple R square of scores with factors\"=digits(FA.results$R2),\n    \"Minimum correlation of possible factor scores\"=digits((2*FA.results$R2)-1)), stringsAsFactors=FALSE)\n  colnames(scfc.corr) <- FA.load.names[[2]]\n\n");
+  echo("\tscfc.corr <- data.frame(rbind(\n\t\t" + i18n("Correlation of scores with factors") + "=digits(sqrt(FA.results$R2)),\n\t\t" + i18n("Multiple R square of scores with factors") + "=digits(FA.results$R2),\n\t\t" + i18n("Minimum correlation of possible factor scores") + "=digits((2*FA.results$R2)-1)), stringsAsFactors=FALSE)\n  colnames(scfc.corr) <- FA.load.names[[2]]\n\n");
   comment("Ok, here the actual output starts");
   if(factorMethod == "PCA") {
-    echo("rk.header(\"Principal Component Analysis\"");  
+    echo("rk.header (" + i18n("Principal Component Analysis"));  
   } else {
-    echo("rk.header(\"Factor Analysis\"");  
+    echo("rk.header (" + i18n("Factor Analysis"));  
   }
-  echo(",\n\tparameters=list(");
+  echo(",\n\tparameters=list(\n");
   if(factorMethod == "PCA") {
-    echo("\t\t\"Number of components\", " + numFactors + ",\n" + "\t\t\"Rotation\", \"" + rotationMethodPCA + "\"");  
+    echo("\t\t" + i18n("Number of components") + ", " + numFactors + ",\n" + "\t\t" + i18n("Rotation") + ", \"" + rotationMethodPCA + "\"");  
   } else {
-    echo("\t\t\"Number of factors\", " + numFactors + ",\n" + "\t\t\"Factoring method\", \"" + factorMethodEFA + "\",\n" + "\t\t\"Rotation\", \"" + rotationMethodEFA + "\"");  
+    echo("\t\t" + i18n("Number of factors") + ", " + numFactors + ",\n" + "\t\t" + i18n("Factoring method") + ", \"" + factorMethodEFA + "\",\n" + "\t\t" + i18n("Rotation") + ", \"" + rotationMethodEFA + "\"");  
     if(kaiser) {
-      echo(",\n\t\t\"Normalization\", \"Kaiser\"");  
+      echo(",\n\t\t" + i18n("Normalization") + ", \"Kaiser\"");  
     } else {}  
   }
   echo("))\n");
-  echo("rk.results(list(\n  \"Degrees of freedom\"=FA.results$dof,\n  \"Fit\"=digits(FA.results$fit),\n  \"Fit (off diag)\"=digits(FA.results$fit.off)\n  ))\n");
-  echo("rk.header(\"Loadings\", level=4)\n");
-  echo("rk.results(FA.load.print)\n");
+  echo("rk.results (list(\n\t" + i18n("Degrees of freedom") + "=FA.results$dof,\n\t" + i18n("Fit") + "=digits(FA.results$fit),\n\t" + i18n("Fit (off diag)") + "=digits(FA.results$fit.off)\n\t))\n");
+  new Header(i18n("Loadings"), 4).print();
+  echo("rk.results (FA.load.print)\n");
   if(isObrot) {
-    echo("rk.header(\"Factor correlations\", level=4)\nrk.results(data.frame(comp.corr, stringsAsFactors=FALSE))\n");  
+    new Header(i18n("Factor correlations"), 4).print();  
+    echo("rk.results (data.frame(comp.corr, stringsAsFactors=FALSE))\n");  
   } else {}
-  echo("rk.header(\"Measures of factor score adequacy\", level=4)\n");
-  echo("rk.results(scfc.corr)\n");
+  new Header(i18n("Measures of factor score adequacy"), 4).print();
+  echo("rk.results (scfc.corr)\n");
   //// save result object
   // read in saveobject variables
   var saveResults = getValue("saveResults");
