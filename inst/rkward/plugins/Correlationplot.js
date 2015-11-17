@@ -63,7 +63,7 @@ function doPrintout(full){
   if(crpltMainTitle != "Correlation plot") {
     echo(",\n\t\t\tmain=\"" + crpltMainTitle + "\"");  
   } else {}
-  if(spinLower != 1 -  || spinUpper != 1) {
+  if(spinLower != -1 || spinUpper != 1) {
     echo(",\n\t\t\tzlim=c(" + spinLower + "," + spinUpper + ")");  
   } else {}
   if(crpltShowLegendChecked) {
