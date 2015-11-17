@@ -3,26 +3,29 @@
 # note: this script only creates objects in your workspace,
 # *EXCEPT* for the last call, see below.
 
+require(rkwarddev)
+rkwarddev.required("0.07-4")
+
 local({
 # set the output directory to overwrite the actual plugin
 output.dir <- tempdir()
 overwrite <- TRUE
 # if you set guess.getters to TRUE, the resulting code will need RKWard >= 0.6.0
 guess.getter <- TRUE
-
-require(rkwarddev)
+rk.set.indent(by="  ")
+rk.set.empty.e(TRUE)
 
 about.info <- rk.XML.about(
-	name="rk.FactorAnalysis",
-	author=c(
-		person(given="Meik", family="Michalke",
-			email="meik.michalke@hhu.de", role=c("aut","cre"))),
-	about=list(desc="RKWard GUI to conduct principal component and factor analysis",
-		version="0.01-14", url="https://rkward.kde.org", long.desc="RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis.")
-	)
+  name="rk.FactorAnalysis",
+  author=c(
+    person(given="Meik", family="Michalke",
+      email="meik.michalke@hhu.de", role=c("aut","cre"))),
+  about=list(desc="RKWard GUI to conduct principal component and factor analysis",
+    version="0.01-14", url="https://rkward.kde.org", long.desc="RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis.")
+  )
 dependencies.info <- rk.XML.dependencies(
-	dependencies=list(rkward.min=ifelse(isTRUE(guess.getter), "0.6.0", "0.5.6")),
-	package=list(c(name="psych", min="1.1.10"))
+  dependencies=list(rkward.min=ifelse(isTRUE(guess.getter), "0.6.0", "0.5.6")),
+  package=list(c(name="psych", min="1.1.10"))
 )
 
 
@@ -31,649 +34,743 @@ dependencies.info <- rk.XML.dependencies(
 #############
 # using principal()/fa() of the package 'psych'
 
-radio.analysis <- rk.XML.radio("Factoring method", options=list(
-		"Principal component analysis"=c(val="PCA"),
-		"Exploratory factor analysis"=c(val="EFA", chk=TRUE)
-	))
-radio.corr.type <- rk.XML.radio("Correlation method", options=list(
-		"Pearson product-moment (numeric data)"=c(val="fa", chk=TRUE),
-		"Polychoric (polytomous data)"=c(val="fa.poly")
-	))
-var.select <- rk.XML.varselector(label="Select data")
-var.data <- rk.XML.varslot(label="Correlation matrix (or raw data matrix)", source=var.select, required=TRUE)
+factorMethod <- rk.XML.radio("Factoring method",
+  options=list(
+    "Principal component analysis"=c(val="PCA"),
+    "Exploratory factor analysis"=c(val="EFA", chk=TRUE)
+  ),
+  id.name="factorMethod"
+)
+corrMethod <- rk.XML.radio("Correlation method",
+  options=list(
+    "Pearson product-moment (numeric data)"=c(val="fa", chk=TRUE),
+    "Polychoric (polytomous data)"=c(val="fa.poly")
+  ),
+  id.name="corrMethod"
+)
+data <- rk.XML.varselector(label="Select data", id.name="data")
+dataSelected <- rk.XML.varslot(label="Correlation matrix (or raw data matrix)", source=data, required=TRUE, id.name="dataSelected")
 
-save.results <- rk.XML.saveobj("Save results to workspace", initial="FA.results")
+saveResults <- rk.XML.saveobj("Save results to workspace", initial="FA.results", id.name="saveResults")
 
-drp.rotation.PCA <- rk.XML.dropdown("Rotation method", options=list(
-		"none"=c(val="none"),
-		"varimax (orthogonal)"=c(val="varimax", chk=TRUE),
-		"quatimax (orthogonal)"=c(val="quatimax"),
-		"promax"=c(val="promax"),
-		"oblimin"=c(val="oblimin"),
-		"simplimax"=c(val="simplimax"),
-		"cluster"=c(val="cluster")
-	), id.name="drp_PCA_rotate")
-drp.rotation.EFA <- rk.XML.dropdown("Rotation method", options=list(
-		"None"=c(val="none"),
-		"Varimax (orthogonal)"=c(val="varimax"),
-		"Quatimax (orthogonal)"=c(val="quatimax"),
-		"BentlerT (orthogonal)"=c(val="bentlerT"),
-		"GeominT (orthogonal)"=c(val="geominT"),
-		"Bifactor (orthogonal)"=c(val="bifactor"),
-		"Promax"=c(val="promax"),
-		"Oblimin"=c(val="oblimin", chk=TRUE),
-		"Simplimax"=c(val="simplimax"),
-		"BentlerQ"=c(val="bentlerQ"),
-		"GeominQ"=c(val="geominQ"),
-		"Biquartimin"=c(val="biquartimin"),
-		"Cluster"=c(val="cluster")
-	), id.name="drp_EFA_rotate")
+rotationMethodPCA <- rk.XML.dropdown("Rotation method",
+  options=list(
+    "none"=c(val="none"),
+    "varimax (orthogonal)"=c(val="varimax", chk=TRUE),
+    "quatimax (orthogonal)"=c(val="quatimax"),
+    "promax"=c(val="promax"),
+    "oblimin"=c(val="oblimin"),
+    "simplimax"=c(val="simplimax"),
+    "cluster"=c(val="cluster")
+  ),
+  id.name="rotationMethodPCA"
+)
+rotationMethodEFA <- rk.XML.dropdown("Rotation method",
+  options=list(
+    "None"=c(val="none"),
+    "Varimax (orthogonal)"=c(val="varimax"),
+    "Quatimax (orthogonal)"=c(val="quatimax"),
+    "BentlerT (orthogonal)"=c(val="bentlerT"),
+    "GeominT (orthogonal)"=c(val="geominT"),
+    "Bifactor (orthogonal)"=c(val="bifactor"),
+    "Promax"=c(val="promax"),
+    "Oblimin"=c(val="oblimin", chk=TRUE),
+    "Simplimax"=c(val="simplimax"),
+    "BentlerQ"=c(val="bentlerQ"),
+    "GeominQ"=c(val="geominQ"),
+    "Biquartimin"=c(val="biquartimin"),
+    "Cluster"=c(val="cluster")
+  ),
+  id.name="rotationMethodEFA"
+)
 
-drp.factmeth.EFA <- rk.XML.dropdown("Factoring method", options=list(
-		"Minimum residual (ULS)"=c(val="minres", chk=TRUE),
-		"Weighted least squares (WLS)"=c(val="wls"),
-		"Generalized weighted least squares (GLS)"=c(val="gls"),
-		"Principal axis"=c(val="pa"),
-		"Maximum likelihood"=c(val="ml")
-	), id.name="drp_EFA_factmeth")
+factorMethodEFA <- rk.XML.dropdown("Factoring method",
+  options=list(
+    "Minimum residual (ULS)"=c(val="minres", chk=TRUE),
+    "Weighted least squares (WLS)"=c(val="wls"),
+    "Generalized weighted least squares (GLS)"=c(val="gls"),
+    "Principal axis"=c(val="pa"),
+    "Maximum likelihood"=c(val="ml")
+  ),
+  id.name="factorMethodEFA"
+)
 
-radio.SMC.EFA <- rk.XML.radio("Initial communality estimate", options=list(
-		"Squared multiple correlations"=c(val="true", chk=TRUE),
-		"1"=c(val="false")
-	))
-radio.covar.EFA <- rk.XML.radio("Matrix to factor", options=list(
-		"Factor correlation matrix"=c(val="false", chk=TRUE),
-		"Factor covariance matrix"=c(val="true")
-	))
-radio.scrmtx.EFA <- rk.XML.radio("Matrix to score", options=list(
-		"Scores based on structure matrix (oblique)"=c(val="true", chk=TRUE),
-		"Scores based on pattern matrix"=c(val="false")
-	))
+initCommunalityEst <- rk.XML.radio("Initial communality estimate",
+  options=list(
+    "Squared multiple correlations"=c(val="true", chk=TRUE),
+    "1"=c(val="false")
+  ),
+  id.name="initCommunalityEst"
+)
+matrixToFactor <- rk.XML.radio("Matrix to factor",
+  options=list(
+    "Factor correlation matrix"=c(val="false", chk=TRUE),
+    "Factor covariance matrix"=c(val="true")
+  ),
+  id.name="matrixToFactor"
+)
+matrixToScore <- rk.XML.radio("Matrix to score",
+  options=list(
+    "Scores based on structure matrix (oblique)"=c(val="true", chk=TRUE),
+    "Scores based on pattern matrix"=c(val="false")
+  ),
+  id.name="matrixToScore"
+)
 
 # common options
-spin.nfactors <- rk.XML.spinbox("Number of factors to extract", min=1, initial=1, real=FALSE)
-spin.cutoff <- rk.XML.spinbox("Marker item threshold (cut-off)", initial=0.1)
-spin.digits <- rk.XML.spinbox("Show decimals", min=0, initial=3, max=20, real=FALSE)
+numFactors <- rk.XML.spinbox("Number of factors to extract", min=1, initial=1, real=FALSE, id.name="numFactors")
+cutoff <- rk.XML.spinbox("Marker item threshold (cut-off)", initial=0.1, id.name="cutoff")
+showDecimals <- rk.XML.spinbox("Show decimals", min=0, initial=3, max=20, real=FALSE, id.name="showDecimals")
 
-chk.residuals <- rk.XML.cbox("Show residuals", value="true")
-FA.chk.kaiser <- rk.XML.cbox("Apply Kaiser normalization")
+showResiduals <- rk.XML.cbox("Show residuals", value="true", id.name="showResiduals")
+kaiser <- rk.XML.cbox("Apply Kaiser normalization", id.name="kaiser")
 
-drp.scores.EFA <- rk.XML.dropdown("Method to find factor scores", options=list(
-	"Regression"=c(val="regression", chk=TRUE),
-	"Simple regression (Thurstone)"=c(val="Thurstone"),
-	"correlation preserving (ten Berge)"=c(val="tenBerge"),
-	"Anderson"=c(val="Anderson"),
-	"Bartlett"=c(val="Bartlett")))
-drp.missings.PCA <- rk.XML.dropdown("Dealing with missing values", options=list(
-	"Don't impute missing values"=c(val="none", chk=TRUE),
-	"Replace with median"=c(val="median"),
-	"Replace with mean"=c(val="mean")), id.name="radio_missings_PCA")
-drp.missings.EFA <- rk.XML.dropdown("Dealing with missing values", options=list(
-	"Don't impute missing values"=c(val="none", chk=TRUE),
-	"Replace with median"=c(val="median"),
-	"Replace with mean"=c(val="mean")), id.name="radio_missings_EFA")
-chk.scores <- rk.XML.frame(drp.missings.PCA, label="Find component scores", checkable=TRUE, chk=FALSE)
-spin.nobs <- rk.XML.spinbox("Number of observations to find the correlation matrix (GoF statistics)", min=0, initial=0, real=FALSE)
+factorScoreMethod <- rk.XML.dropdown("Method to find factor scores",
+  options=list(
+    "Regression"=c(val="regression", chk=TRUE),
+    "Simple regression (Thurstone)"=c(val="Thurstone"),
+    "correlation preserving (ten Berge)"=c(val="tenBerge"),
+    "Anderson"=c(val="Anderson"),
+    "Bartlett"=c(val="Bartlett")
+  ),
+  id.name="factorScoreMethod"
+)
+missingsPCA <- rk.XML.dropdown("Dealing with missing values",
+  options=list(
+    "Don't impute missing values"=c(val="none", chk=TRUE),
+    "Replace with median"=c(val="median"),
+    "Replace with mean"=c(val="mean")
+  ),
+  id.name="missingsPCA"
+)
+missingsEFA <- rk.XML.dropdown("Dealing with missing values",
+  options=list(
+    "Don't impute missing values"=c(val="none", chk=TRUE),
+    "Replace with median"=c(val="median"),
+    "Replace with mean"=c(val="mean")
+  ),
+  id.name="missingsEFA"
+)
+componentScores <- rk.XML.frame(missingsPCA, label="Find component scores", checkable=TRUE, chk=FALSE, id.name="componentScores")
+numObs <- rk.XML.spinbox("Number of observations to find the correlation matrix (GoF statistics)",
+  min=0,
+  initial=0,
+  real=FALSE,
+  id.name="numObs"
+)
 
-spin.niter <- rk.XML.spinbox("Number of iterations", min=2, initial=2, real=FALSE)
-spin.minerr <- rk.XML.spinbox("Until change in communalities is less than", min=0.0001, initial=0.001)
-spin.maxiter <- rk.XML.spinbox("Maximum number of iterations", min=2, initial=50, real=FALSE)
-chk.iterate <- rk.XML.frame(
-	rk.XML.row(
-		rk.XML.col(spin.niter),
-		rk.XML.col(spin.minerr),
-		rk.XML.col(spin.maxiter)
-	),
-	label="Perform bootstrap iterations", checkable=TRUE, chk=FALSE)
+numIter <- rk.XML.spinbox("Number of iterations", min=2, initial=2, real=FALSE, id.name="numIter")
+minErr <- rk.XML.spinbox("Until change in communalities is less than", min=0.0001, initial=0.001, id.name="minErr")
+maxIter <- rk.XML.spinbox("Maximum number of iterations", min=2, initial=50, real=FALSE, id.name="maxIter")
+iterate <- rk.XML.frame(
+  rk.XML.row(
+    rk.XML.col(numIter),
+    rk.XML.col(minErr),
+    rk.XML.col(maxIter)
+  ),
+  label="Perform bootstrap iterations",
+  checkable=TRUE,
+  chk=FALSE,
+  id.name="iterate"
+)
 
 tab1.data <- rk.XML.row(
-		var.select,
-		rk.XML.col(
-			rk.XML.frame(var.data),
-			rk.XML.frame(radio.analysis),
-			rk.XML.frame(radio.corr.type),
-			spin.nfactors,
-			rk.XML.stretch(),
-			save.results
-		)
-	)
+    data,
+    rk.XML.col(
+      rk.XML.frame(dataSelected),
+      rk.XML.frame(factorMethod),
+      rk.XML.frame(corrMethod),
+      numFactors,
+      rk.XML.stretch(),
+      saveResults
+    )
+  )
 
 tab2.options <- rk.XML.row(
-		rk.XML.col(
-			rk.XML.row(
-				rk.XML.col(
-					drp.rotation.PCA,
-					drp.rotation.EFA
-				),
-				rk.XML.col(
-					drp.factmeth.EFA
-				)
-			),
-			rk.XML.row(
-				rk.XML.col(radio.SMC.EFA),
-				rk.XML.col(radio.covar.EFA),
-				rk.XML.col(radio.scrmtx.EFA)
-			),
-			rk.XML.frame(
-				rk.XML.row(
-					rk.XML.col(chk.residuals),
-					rk.XML.col(FA.chk.kaiser)
-				)
-			),
-			chk.scores,
-			rk.XML.row(
-				rk.XML.col(drp.scores.EFA),
-				rk.XML.col(drp.missings.EFA)
-			),
- 			spin.nobs,
-			chk.iterate,
- 			rk.XML.stretch(),
-			rk.XML.frame(
-				rk.XML.row(
-					rk.XML.col(spin.cutoff),
-					rk.XML.col(spin.digits)
-				),
-			label="Output")
-		), id.name="row_cPCAREFARNmain"
- 	)
+    rk.XML.col(
+      rk.XML.row(
+        rk.XML.col(
+          rotationMethodPCA,
+          rotationMethodEFA
+        ),
+        rk.XML.col(
+          factorMethodEFA
+        )
+      ),
+      rk.XML.row(
+        rk.XML.col(initCommunalityEst),
+        rk.XML.col(matrixToFactor),
+        rk.XML.col(matrixToScore)
+      ),
+      rk.XML.frame(
+        rk.XML.row(
+          rk.XML.col(showResiduals),
+          rk.XML.col(kaiser)
+        )
+      ),
+      componentScores,
+      rk.XML.row(
+        rk.XML.col(factorScoreMethod),
+        rk.XML.col(missingsEFA)
+      ),
+       numObs,
+      iterate,
+       rk.XML.stretch(),
+      rk.XML.frame(
+        rk.XML.row(
+          rk.XML.col(cutoff),
+          rk.XML.col(showDecimals)
+        ),
+      label="Output")
+    ), id.name="row_cPCAREFARNmain"
+   )
 
 full.dialog <- rk.XML.dialog(rk.XML.tabbook(label="Factor analysis",
-		tabs=list("Data"=tab1.data, "Options"=tab2.options)
-	), label="Factor analysis")
+    tabs=list("Data"=tab1.data, "Options"=tab2.options)
+  ), label="Factor analysis")
 
 ## logic section
-	lgc.sect <- rk.XML.logic(
-		FA.gov.analysis <- rk.XML.convert(sources=list(string=radio.analysis), mode=c(equals="PCA")),
-		FA.gov.corr <- rk.XML.convert(sources=list(string=radio.corr.type), mode=c(equals="fa")),
-		FA.gov.fa <- rk.XML.convert(sources=list(not=FA.gov.analysis, FA.gov.corr), mode=c(and=""), id.name="lgc_lgcFPCACfa"),
-		FA.gov.notpoly <- rk.XML.convert(sources=list(FA.gov.analysis, FA.gov.corr), mode=c(or=""), id.name="lgc_lgcFPCACnp"),
-		rk.XML.connect(governor=FA.gov.analysis, client=drp.rotation.PCA, set="visible"),
-		rk.XML.connect(governor=FA.gov.analysis, client=drp.rotation.EFA, set="visible", not=TRUE),
-		rk.XML.connect(governor=FA.gov.analysis, client=drp.factmeth.EFA, set="enabled", not=TRUE),
-		rk.XML.connect(governor=FA.gov.analysis, client=radio.SMC.EFA, set="enabled", not=TRUE),
-		rk.XML.connect(governor=FA.gov.fa, client=radio.covar.EFA, set="enabled"),
-		rk.XML.connect(governor=FA.gov.notpoly, client=chk.residuals, set="enabled"),
-		rk.XML.connect(governor=FA.gov.analysis, client=radio.scrmtx.EFA, set="enabled", not=TRUE),
-		rk.XML.connect(governor=FA.gov.analysis, client=chk.scores, set="visible"),
-		rk.XML.connect(governor=FA.gov.analysis, client=drp.scores.EFA, set="visible", not=TRUE),
-		rk.XML.connect(governor=FA.gov.fa, client=drp.scores.EFA, set="enabled"),
-		rk.XML.connect(governor=FA.gov.analysis, client=drp.missings.EFA, set="visible", not=TRUE),
-		rk.XML.connect(governor=FA.gov.analysis, client=chk.iterate, set="enabled", not=TRUE),
-		rk.XML.connect(governor=FA.gov.analysis, client=radio.corr.type, set="enabled", not=TRUE)
+  lgc.sect <- rk.XML.logic(
+    FA.gov.analysis <- rk.XML.convert(sources=list(string=factorMethod), mode=c(equals="PCA")),
+    FA.gov.corr <- rk.XML.convert(sources=list(string=corrMethod), mode=c(equals="fa")),
+    FA.gov.fa <- rk.XML.convert(sources=list(not=FA.gov.analysis, FA.gov.corr), mode=c(and=""), id.name="lgc_lgcFPCACfa"),
+    FA.gov.notpoly <- rk.XML.convert(sources=list(FA.gov.analysis, FA.gov.corr), mode=c(or=""), id.name="lgc_lgcFPCACnp"),
+    rk.XML.connect(governor=FA.gov.analysis, client=rotationMethodPCA, set="visible"),
+    rk.XML.connect(governor=FA.gov.analysis, client=rotationMethodEFA, set="visible", not=TRUE),
+    rk.XML.connect(governor=FA.gov.analysis, client=factorMethodEFA, set="enabled", not=TRUE),
+    rk.XML.connect(governor=FA.gov.analysis, client=initCommunalityEst, set="enabled", not=TRUE),
+    rk.XML.connect(governor=FA.gov.fa, client=matrixToFactor, set="enabled"),
+    rk.XML.connect(governor=FA.gov.notpoly, client=showResiduals, set="enabled"),
+    rk.XML.connect(governor=FA.gov.analysis, client=matrixToScore, set="enabled", not=TRUE),
+    rk.XML.connect(governor=FA.gov.analysis, client=componentScores, set="visible"),
+    rk.XML.connect(governor=FA.gov.analysis, client=factorScoreMethod, set="visible", not=TRUE),
+    rk.XML.connect(governor=FA.gov.fa, client=factorScoreMethod, set="enabled"),
+    rk.XML.connect(governor=FA.gov.analysis, client=missingsEFA, set="visible", not=TRUE),
+    rk.XML.connect(governor=FA.gov.analysis, client=iterate, set="enabled", not=TRUE),
+    rk.XML.connect(governor=FA.gov.analysis, client=corrMethod, set="enabled", not=TRUE)
 )
 
 ## JavaScript
 # discard this object later, we just need the name...
-js.frm.score <- rk.JS.vars(chk.scores, modifiers="checked")
-js.frm.iterate <- rk.JS.vars(chk.iterate, modifiers="checked")
+js.frm.score <- rk.JS.vars(componentScores, modifiers="checked")
+js.frm.iterate <- rk.JS.vars(iterate, modifiers="checked")
 
 js.calc <- rk.paste.JS(
-	# create a variable for oblique transformations
-	"var obrot = new Array(\"promax\", \"oblimin\", \"simplimax\", \"bentlerQ\", \"geominQ\", \"biquartimin\", \"cluster\");\n",
-	ite(id("(obrot.indexOf(",drp.rotation.EFA ,") == -1 && ", radio.analysis,
-		" != \"PCA\") | (obrot.indexOf(", drp.rotation.PCA ,") == -1 && ", radio.analysis,
-		" == \"PCA\")"),
-	"isObrot = false;", "isObrot = true;"),
-	echo("\tFA.results <- "),
-	ite(id(radio.analysis, " == \"PCA\""),
-		echo("principal("),
-		ite(FA.chk.kaiser,
-			echo("kaiser(", radio.corr.type, "("),
-			echo(radio.corr.type, "("))),
-	ite(var.data, 
-		ite(id(radio.analysis, " == \"EFA\" && ", radio.corr.type, " == \"fa.poly\""),
-			echo("x=", var.data),
-			echo("r=", var.data))),
-	ite(id(spin.nfactors, " > 1"), echo(",\n\t\tnfactors=", spin.nfactors)),
-	ite(id(radio.analysis, " == \"PCA\" || ", radio.corr.type, " == \"fa\""),
-		tf(chk.residuals, opt="residuals")),
-	ite(id(radio.analysis, " == \"PCA\""),
-		echo(",\n\t\trotate=\"", drp.rotation.PCA, "\""),
-		ite(FA.chk.kaiser,
-			echo(",\n\t\trotate=\"none\""),
-			echo(",\n\t\trotate=\"", drp.rotation.EFA, "\""))),
-	ite(id(spin.nobs, " > 0"), echo(",\n\t\tn.obs=", spin.nobs)),
-	ite(id(radio.analysis, " == \"PCA\""),
-		rk.paste.JS(
-			ite(js.frm.score, echo(",\n\t\tscores=TRUE")),
-			ite(id(js.frm.score, " & ", drp.missings.PCA, " != \"none\""), echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", drp.missings.PCA, "\"")),
-		level=3),
-		rk.paste.JS(
-			ite(id(js.frm.iterate), echo(",\n\t\tn.iter=", spin.niter)),
-			ite(id(radio.corr.type, " == \"fa\""), echo(",\n\t\tscores=\"", drp.scores.EFA, "\"")),
-			ite(id(radio.SMC.EFA, " == \"false\""), echo(",\n\t\tSMC=FALSE")),
-			ite(id(radio.corr.type, " == \"fa\" && ", radio.covar.EFA, " == \"true\"" ), echo(",\n\t\tcovar=TRUE")),
-			ite(id(drp.missings.EFA, " != \"none\""), echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", drp.missings.EFA, "\"")),
-			ite(id(js.frm.iterate, " & ", spin.minerr, " != 0.001"), echo(",\n\t\tmin.err=", spin.minerr)),
-			ite(id(js.frm.iterate, " & ", spin.maxiter, " != 50"), echo(",\n\t\tmax.iter=", spin.maxiter)),
-			echo(",\n\t\tfm=\"", drp.factmeth.EFA, "\""),
-			ite(id(radio.scrmtx.EFA, " == \"false\"" ), echo(",\n\t\toblique.scores=FALSE")),
-		level=3)),
-	ite(id(radio.analysis, " == \"EFA\" && ", FA.chk.kaiser), echo("), rotate=\"", drp.rotation.EFA, "\"")),
-	echo(")\n\n")
+  # create a variable for oblique transformations
+  "var obrot = new Array(\"promax\", \"oblimin\", \"simplimax\", \"bentlerQ\", \"geominQ\", \"biquartimin\", \"cluster\");\n",
+  ite(id("(obrot.indexOf(",rotationMethodEFA ,") == -1 && ", factorMethod,
+    " != \"PCA\") | (obrot.indexOf(", rotationMethodPCA ,") == -1 && ", factorMethod,
+    " == \"PCA\")"),
+  "isObrot = false;", "isObrot = true;"),
+  echo("\tFA.results <- "),
+  ite(id(factorMethod, " == \"PCA\""),
+    echo("principal("),
+    ite(kaiser,
+      echo("kaiser(", corrMethod, "("),
+      echo(corrMethod, "("))),
+  ite(dataSelected, 
+    ite(id(factorMethod, " == \"EFA\" && ", corrMethod, " == \"fa.poly\""),
+      echo("x=", dataSelected),
+      echo("r=", dataSelected))),
+  ite(id(numFactors, " > 1"), echo(",\n\t\tnfactors=", numFactors)),
+  ite(id(factorMethod, " == \"PCA\" || ", corrMethod, " == \"fa\""),
+    tf(showResiduals, opt="residuals")),
+  ite(id(factorMethod, " == \"PCA\""),
+    echo(",\n\t\trotate=\"", rotationMethodPCA, "\""),
+    ite(kaiser,
+      echo(",\n\t\trotate=\"none\""),
+      echo(",\n\t\trotate=\"", rotationMethodEFA, "\""))),
+  ite(id(numObs, " > 0"), echo(",\n\t\tn.obs=", numObs)),
+  ite(id(factorMethod, " == \"PCA\""),
+    rk.paste.JS(
+      ite(js.frm.score, echo(",\n\t\tscores=TRUE")),
+      ite(id(js.frm.score, " & ", missingsPCA, " != \"none\""), echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", missingsPCA, "\"")),
+    level=3),
+    rk.paste.JS(
+      ite(id(js.frm.iterate), echo(",\n\t\tn.iter=", numIter)),
+      ite(id(corrMethod, " == \"fa\""), echo(",\n\t\tscores=\"", factorScoreMethod, "\"")),
+      ite(id(initCommunalityEst, " == \"false\""), echo(",\n\t\tSMC=FALSE")),
+      ite(id(corrMethod, " == \"fa\" && ", matrixToFactor, " == \"true\"" ), echo(",\n\t\tcovar=TRUE")),
+      ite(id(missingsEFA, " != \"none\""), echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", missingsEFA, "\"")),
+      ite(id(js.frm.iterate, " & ", minErr, " != 0.001"), echo(",\n\t\tmin.err=", minErr)),
+      ite(id(js.frm.iterate, " & ", maxIter, " != 50"), echo(",\n\t\tmax.iter=", maxIter)),
+      echo(",\n\t\tfm=\"", factorMethodEFA, "\""),
+      ite(id(matrixToScore, " == \"false\"" ), echo(",\n\t\toblique.scores=FALSE")),
+    level=3)),
+  ite(id(factorMethod, " == \"EFA\" && ", kaiser), echo("), rotate=\"", rotationMethodEFA, "\"")),
+  echo(")\n\n")
 )
 
 js.print <- rk.paste.JS(
-	rk.JS.vars(radio.analysis, spin.nfactors, drp.rotation.PCA, drp.factmeth.EFA, drp.rotation.EFA,
-		FA.chk.kaiser, spin.digits, spin.cutoff),
-	echo("\tdigits <- function(obj) {
-		return(format(round(obj, digits=", spin.digits, "), nsmall=", spin.digits, "))
-	}
-	# Make matrix from loadings, for more flexible output
-	FA.load.dim <- dim(FA.results$loadings)
-	FA.load.names <- dimnames(FA.results$loadings)
-	# Nicen component names
-	FA.load.names[[2]] <- paste("),
-	ite(id(radio.analysis, " == \"PCA\""),
-		echo("\"Component\""),
-		echo("\"Factor\"")
-	),
-	echo(", 1:length(FA.load.names[[2]]))
-	FA.load <- FA.results$loadings[!is.character(FA.results$loadings)]
-	FA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)
-	# For printout, highlight loadings
-	idx.load <- FA.load >= ", spin.cutoff, "
-	FA.load.print <- digits(FA.load)
-	FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")
-	FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)
-	# Append communality and uniqueness
-	FA.load.print <- cbind(FA.load.print,
-		\"communality\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),
-		\"uniqueness\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))
-	# Append sum of squared loadings\n"),
-	ite("isObrot",
-		echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n"),
-		echo("\tFA.s2load <- colSums(FA.results$loadings^2)\n")
-	),
-	echo("\t# Variance explained
-	FA.varExp <- 100 * FA.s2load / FA.load.dim[1]
-	FA.load.print <- rbind(FA.load.print,
-		\"Sum of squared loadings\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.s2load), \"</span>\", sep=\"\"),
-		digits(sum(FA.s2load)), \"\"),
-		\"Variance explained (%)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.varExp), \"</span>\", sep=\"\"), \"\", \"\"),
-		\"Variance explained (cum %)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))
-	# Finally, make it a data.frame
-	FA.load.print <- data.frame(FA.load.print, stringsAsFactors=FALSE)\n"),
-	ite("isObrot",
-		echo("\t# Prepare correlation matrix for printout
-		comp.corr <- digits(FA.results$Phi)
-		dimnames(comp.corr) <- list(FA.load.names[[2]],FA.load.names[[2]])\n")
-	),
-	echo("\t# Prepare score*factors matrix for printout
-	scfc.corr <- data.frame(rbind(
-		\"Correlation of scores with factors\"=digits(sqrt(FA.results$R2)),
-		\"Multiple R square of scores with factors\"=digits(FA.results$R2),
-		\"Minimum correlation of possible factor scores\"=digits((2*FA.results$R2)-1)), stringsAsFactors=FALSE)
-	colnames(scfc.corr) <- FA.load.names[[2]]
+  rk.JS.vars(factorMethod, numFactors, rotationMethodPCA, factorMethodEFA, rotationMethodEFA,
+    kaiser, showDecimals, cutoff),
+  echo("\tdigits <- function(obj) {
+    return(format(round(obj, digits=", showDecimals, "), nsmall=", showDecimals, "))
+  }
+  # Make matrix from loadings, for more flexible output
+  FA.load.dim <- dim(FA.results$loadings)
+  FA.load.names <- dimnames(FA.results$loadings)
+  # Nicen component names
+  FA.load.names[[2]] <- paste("),
+  ite(id(factorMethod, " == \"PCA\""),
+    echo("\"Component\""),
+    echo("\"Factor\"")
+  ),
+  echo(", 1:length(FA.load.names[[2]]))
+  FA.load <- FA.results$loadings[!is.character(FA.results$loadings)]
+  FA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)
+  # For printout, highlight loadings
+  idx.load <- FA.load >= ", cutoff, "
+  FA.load.print <- digits(FA.load)
+  FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")
+  FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)
+  # Append communality and uniqueness
+  FA.load.print <- cbind(FA.load.print,
+    \"communality\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),
+    \"uniqueness\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))
+  # Append sum of squared loadings\n"),
+  ite("isObrot",
+    echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n"),
+    echo("\tFA.s2load <- colSums(FA.results$loadings^2)\n")
+  ),
+  echo("\t# Variance explained
+  FA.varExp <- 100 * FA.s2load / FA.load.dim[1]
+  FA.load.print <- rbind(FA.load.print,
+    \"Sum of squared loadings\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.s2load), \"</span>\", sep=\"\"),
+    digits(sum(FA.s2load)), \"\"),
+    \"Variance explained (%)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.varExp), \"</span>\", sep=\"\"), \"\", \"\"),
+    \"Variance explained (cum %)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))
+  # Finally, make it a data.frame
+  FA.load.print <- data.frame(FA.load.print, stringsAsFactors=FALSE)\n"),
+  ite("isObrot",
+    echo("\t# Prepare correlation matrix for printout
+    comp.corr <- digits(FA.results$Phi)
+    dimnames(comp.corr) <- list(FA.load.names[[2]],FA.load.names[[2]])\n")
+  ),
+  echo("\t# Prepare score*factors matrix for printout
+  scfc.corr <- data.frame(rbind(
+    \"Correlation of scores with factors\"=digits(sqrt(FA.results$R2)),
+    \"Multiple R square of scores with factors\"=digits(FA.results$R2),
+    \"Minimum correlation of possible factor scores\"=digits((2*FA.results$R2)-1)), stringsAsFactors=FALSE)
+  colnames(scfc.corr) <- FA.load.names[[2]]
 
-	# Ok, here the actual output starts\n"),
-	ite(id(radio.analysis, " == \"PCA\""),
-		echo("rk.header(\"Principal Component Analysis\""),
-		echo("rk.header(\"Factor Analysis\"")
-	),
-	echo(",\n\tparameters=list("),
-	ite(id(radio.analysis, " == \"PCA\""),
-		echo("\t\t\"Number of components\", ", spin.nfactors, ",\n",
-		"\t\t\"Rotation\", \"", drp.rotation.PCA, "\""
-		),
-		rk.paste.JS(
-			echo("\t\t\"Number of factors\", ", spin.nfactors, ",\n",
-			"\t\t\"Factoring method\", \"", drp.factmeth.EFA,"\",\n",
-			"\t\t\"Rotation\", \"", drp.rotation.EFA, "\""),
-			ite(FA.chk.kaiser, echo(",\n\t\t\"Normalization\", \"Kaiser\"")),
-		level=3)
-	),
-	echo("))\n"), # end rk.header()
-	echo("rk.results(list(
-	\"Degrees of freedom\"=FA.results$dof,
-	\"Fit\"=digits(FA.results$fit),
-	\"Fit (off diag)\"=digits(FA.results$fit.off)
-	))\n"),
-	echo("rk.header(\"Loadings\", level=4)\n"),
-	echo("rk.results(FA.load.print)\n"),
-	ite("isObrot",
-		echo("rk.header(\"Factor correlations\", level=4)\nrk.results(data.frame(comp.corr, stringsAsFactors=FALSE))\n")
-	),
-#	echo("rk.header(\"Test of the hypothesis that ", spin.nfactors, " factors are sufficient\", level=4)\n"),
-	echo("rk.header(\"Measures of factor score adequacy\", level=4)\n"),
-	echo("rk.results(scfc.corr)\n")
+  # Ok, here the actual output starts\n"),
+  ite(id(factorMethod, " == \"PCA\""),
+    echo("rk.header(\"Principal Component Analysis\""),
+    echo("rk.header(\"Factor Analysis\"")
+  ),
+  echo(",\n\tparameters=list("),
+  ite(id(factorMethod, " == \"PCA\""),
+    echo("\t\t\"Number of components\", ", numFactors, ",\n",
+    "\t\t\"Rotation\", \"", rotationMethodPCA, "\""
+    ),
+    rk.paste.JS(
+      echo("\t\t\"Number of factors\", ", numFactors, ",\n",
+      "\t\t\"Factoring method\", \"", factorMethodEFA,"\",\n",
+      "\t\t\"Rotation\", \"", rotationMethodEFA, "\""),
+      ite(kaiser, echo(",\n\t\t\"Normalization\", \"Kaiser\"")),
+    level=3)
+  ),
+  echo("))\n"), # end rk.header()
+  echo("rk.results(list(
+  \"Degrees of freedom\"=FA.results$dof,
+  \"Fit\"=digits(FA.results$fit),
+  \"Fit (off diag)\"=digits(FA.results$fit.off)
+  ))\n"),
+  echo("rk.header(\"Loadings\", level=4)\n"),
+  echo("rk.results(FA.load.print)\n"),
+  ite("isObrot",
+    echo("rk.header(\"Factor correlations\", level=4)\nrk.results(data.frame(comp.corr, stringsAsFactors=FALSE))\n")
+  ),
+#  echo("rk.header(\"Test of the hypothesis that ", numFactors, " factors are sufficient\", level=4)\n"),
+  echo("rk.header(\"Measures of factor score adequacy\", level=4)\n"),
+  echo("rk.results(scfc.corr)\n")
 )
 
 ############
 ## scree plot
 ############
-scree.var.select <- rk.XML.varselector(label="Select data.frame")
-scree.var.data <- rk.XML.varslot(label="Data", source=scree.var.select, required=TRUE)
+screeData <- rk.XML.varselector(label="Select data.frame", id.name="screeData")
+screeDataSelected <- rk.XML.varslot(label="Data", source=screeData, required=TRUE, id.name="screeDataSelected")
 
-scree.radio.crv <- rk.XML.radio(label="Draw scree for", options=list(
-		"Factors and components"=c(val="both"),
-		"Factors only"=c(val="fact"),
-		"Prinicipal components only"=c(val="comp")
-	))
+screeType <- rk.XML.radio(label="Draw scree for",
+  options=list(
+    "Factors and components"=c(val="both"),
+    "Factors only"=c(val="fact"),
+    "Prinicipal components only"=c(val="comp")
+  ),
+  id.name="screeType"
+)
 
-scree.main <- rk.XML.input(label="Main title", initial="Scree plot")
+mainTitle <- rk.XML.input(label="Main title", initial="Scree plot", id.name="mainTitle")
 
-scree.hline.frm <- rk.XML.frame(
-	scree.hline <- rk.XML.spinbox(label="Eigenvalue", min=0, initial=1),
-		checkable=TRUE, chk=TRUE, label="Horizontal line")
+horizLine <- rk.XML.frame(
+  eigenvalue <- rk.XML.spinbox(
+    label="Eigenvalue",
+    min=0,
+    initial=1,
+    id.name="eigenvalue"
+  ),
+  checkable=TRUE,
+  chk=TRUE,
+  label="Horizontal line",
+  id.name="horizLine"
+)
 
 scree.preview <- rk.XML.preview()
 
 scree.full.dialog <- rk.XML.dialog(
-	rk.XML.row(
-		scree.var.select,
-		rk.XML.col(
-			scree.var.data,
-			scree.main,
-			scree.radio.crv,
-			scree.hline.frm,
-			rk.XML.stretch(),
-			scree.preview
-# 			rk.XML.frame(var.dv, var.wid),
-# 			rk.XML.frame(var.within, var.between)
-		)
-	)
+  rk.XML.row(
+    screeData,
+    rk.XML.col(
+      screeDataSelected,
+      mainTitle,
+      screeType,
+      horizLine,
+      rk.XML.stretch(),
+      scree.preview
+#       rk.XML.frame(var.dv, var.wid),
+#       rk.XML.frame(var.within, var.between)
+    )
+  )
 , label="Scree plot")
 
 ## JavaScript
 scree.js.print <- rk.paste.JS(
-	scree.chk.hline <- rk.JS.vars(scree.hline.frm, modifiers="checked"),
-	rk.paste.JS.graph(
-		echo("\t\tscree("),
-		ite(scree.var.data, echo("\n\t\t\t", scree.var.data)),
-		ite(id(scree.radio.crv, " == \"comp\""), echo(",\n\t\t\tfactors=FALSE")),
-		ite(id(scree.radio.crv, " == \"fact\""), echo(",\n\t\t\tpc=FALSE")),
-		ite(id(scree.main, " != \"Scree plot\""), echo(",\n\t\t\tmain=\"", scree.main, "\"")),
-		ite(scree.chk.hline,
-			rk.paste.JS(ite(id(scree.hline, " != 1"), echo(",\n\t\t\thline=", scree.hline)), level=1),
-			echo(",\n\t\t\thline=-1")),
-		echo(")")
-	)
+  scree.chk.hline <- rk.JS.vars(horizLine, modifiers="checked"),
+  rk.paste.JS.graph(
+    echo("\t\tscree("),
+    ite(screeDataSelected, echo("\n\t\t\t", screeDataSelected)),
+    ite(id(screeType, " == \"comp\""), echo(",\n\t\t\tfactors=FALSE")),
+    ite(id(screeType, " == \"fact\""), echo(",\n\t\t\tpc=FALSE")),
+    ite(id(mainTitle, " != \"Scree plot\""), echo(",\n\t\t\tmain=\"", mainTitle, "\"")),
+    ite(scree.chk.hline,
+      rk.paste.JS(ite(id(eigenvalue, " != 1"), echo(",\n\t\t\thline=", eigenvalue)), level=1),
+      echo(",\n\t\t\thline=-1")),
+    echo(")")
+  )
 )
 
 ## make a whole component
 scree.component <- rk.plugin.component("Scree plot",
-	xml=list(
-		dialog=scree.full.dialog),
-	js=list(
-		require="psych",
-		doPrintout=scree.js.print),
-	guess.getter=guess.getter,
-	hierarchy=list("analysis", "Factor analysis","Number of factors"),
-	create=c("xml", "js"))
+  xml=list(
+    dialog=scree.full.dialog),
+  js=list(
+    require="psych",
+    doPrintout=scree.js.print),
+  guess.getter=guess.getter,
+  hierarchy=list("analysis", "Factor analysis","Number of factors"),
+  create=c("xml", "js"))
 
 
 ############
 ## Horn's parallel analysis
 ############
-prll.var.select <- rk.XML.varselector(label="Select data.frame/matrix")
-prll.var.data <- rk.XML.varslot(label="Data", source=prll.var.select, required=TRUE)
+hornData <- rk.XML.varselector(label="Select data.frame/matrix", id.name="hornData")
+hornDataSelected <- rk.XML.varslot(label="Data", source=hornData, required=TRUE, id.name="hornDataSelected")
 
 # minres, ml, uls, wls, gls, pa
-prll.factmeth <- rk.XML.dropdown("Factoring method", options=list(
-		"Minimum residual (ULS)"=c(val="minres", chk=TRUE),
-		"Weighted least squares (WLS)"=c(val="wls"),
-		"Generalized weighted least squares (GLS)"=c(val="gls"),
-		"Principal axis"=c(val="pa"),
-		"Maximum likelihood"=c(val="ml")
-	), id.name="drp_prll_factmeth")
+hornFactorMethod <- rk.XML.dropdown("Factoring method",
+  options=list(
+    "Minimum residual (ULS)"=c(val="minres", chk=TRUE),
+    "Weighted least squares (WLS)"=c(val="wls"),
+    "Generalized weighted least squares (GLS)"=c(val="gls"),
+    "Principal axis"=c(val="pa"),
+    "Maximum likelihood"=c(val="ml")
+  ),
+  id.name="hornFactorMethod"
+)
 
 
-prll.radio.crv <- rk.XML.radio(label="Show Eigen values for", options=list(
-		"Factors and components"=c(val="both"),
-		"Factors only"=c(val="fa"),
-		"Prinicipal components only"=c(val="pc")
-	))
+eigenvalueType <- rk.XML.radio(label="Show Eigenvalues for",
+  options=list(
+    "Factors and components"=c(val="both"),
+    "Factors only"=c(val="fa"),
+    "Prinicipal components only"=c(val="pc")
+  ),
+  id.name="eigenvalueType"
+)
 
-prll.main <- rk.XML.input(label="Main title", initial="Parallel Analysis Scree Plots")
+hornMainTitle <- rk.XML.input(label="Main title", initial="Parallel Analysis Scree Plots", id.name="hornMainTitle")
 # prll.ylabel <- rk.XML.input(label="Y axis", initial="Eigen values of factors and components")
 
-prll.spin.nobs <- rk.XML.spinbox("Number of observations (0 implies raw data)", min=0, initial=0, real=FALSE)
+hornNumObs <- rk.XML.spinbox("Number of observations (0 implies raw data)", min=0, initial=0, real=FALSE, id.name="hornNumObs")
 
-prll.spin.niter <- rk.XML.spinbox("Number of iterations", min=2, initial=20, real=FALSE)
+hornNumIter <- rk.XML.spinbox("Number of iterations", min=2, initial=20, real=FALSE, id.name="hornNumIter")
 
-prll.cbox.smc <- rk.XML.cbox("Estimate communalities by SMCs")
+SMCs <- rk.XML.cbox("Estimate communalities by SMCs", id.name="SMCs")
 
-prll.cbox.error.bars <- rk.XML.cbox("Plot error bars")
+errorBars <- rk.XML.cbox("Plot error bars", id.name="errorBars")
 
-prll.cbox.legend <- rk.XML.cbox("Show legend", chk=TRUE)
+showLegend <- rk.XML.cbox("Show legend", chk=TRUE, id.name="showLegend")
 
 prll.preview <- rk.XML.preview()
 
-prll.save.results <- rk.XML.saveobj("Save data to workspace", initial="parallel.data")
+hornSaveResults <- rk.XML.saveobj("Save data to workspace", initial="parallel.data", id.name="hornSaveResults")
 
 
 prll.full.dialog <- rk.XML.dialog(
-	rk.XML.row(
-		prll.var.select,
-		rk.XML.col(
-			prll.var.data,
-			prll.main,
-			prll.radio.crv,
-			prll.factmeth,
-			prll.spin.nobs,
-			prll.spin.niter,
-			prll.cbox.smc,
-			prll.cbox.error.bars,
-			prll.cbox.legend,
-			rk.XML.stretch(),
-			prll.save.results,
-			prll.preview
-		)
-	)
+  rk.XML.row(
+    hornData,
+    rk.XML.col(
+      hornDataSelected,
+      hornMainTitle,
+      eigenvalueType,
+      hornFactorMethod,
+      hornNumObs,
+      hornNumIter,
+      SMCs,
+      errorBars,
+      showLegend,
+      rk.XML.stretch(),
+      hornSaveResults,
+      prll.preview
+    )
+  )
 , label="Parallel analysis")
 
 ## JavaScript
 prll.js.print <- rk.paste.JS.graph(
-	echo("\t\tparallel.data <- fa.parallel("),
-	ite(prll.var.data, echo("\n\t\t\t", prll.var.data)),
-	ite(id(prll.spin.nobs, " != 0"), echo(",\n\t\t\tn.obs=", prll.spin.nobs)), # NULL
-	ite(id(prll.factmeth, " != \"minres\""), echo(",\n\t\t\tfm=\"", prll.factmeth, "\"")),
-	ite(id(prll.radio.crv, " != \"both\""), echo(",\n\t\t\tfa=\"", prll.radio.crv, "\"")),
-	ite(id(prll.main, " != \"Parallel Analysis Scree Plots\""), echo(",\n\t\t\tmain=\"", prll.main, "\"")),
-	ite(id(prll.spin.niter, " != 20"), echo(",\n\t\t\tn.iter=", prll.spin.niter)),
-	tf(prll.cbox.error.bars, opt="error.bars", level=4), # FALSE
-	tf(prll.cbox.smc, opt="SMC", level=4), # FALSE
-	# prll.ylabel # NULL
-	tf(prll.cbox.legend, opt="show.legend", true=FALSE, not=TRUE, level=4), # TRUE
-	echo(")")
+  echo("\t\tparallel.data <- fa.parallel("),
+  ite(hornDataSelected, echo("\n\t\t\t", hornDataSelected)),
+  ite(id(hornNumObs, " != 0"), echo(",\n\t\t\tn.obs=", hornNumObs)), # NULL
+  ite(id(hornFactorMethod, " != \"minres\""), echo(",\n\t\t\tfm=\"", hornFactorMethod, "\"")),
+  ite(id(eigenvalueType, " != \"both\""), echo(",\n\t\t\tfa=\"", eigenvalueType, "\"")),
+  ite(id(hornMainTitle, " != \"Parallel Analysis Scree Plots\""), echo(",\n\t\t\tmain=\"", hornMainTitle, "\"")),
+  ite(id(hornNumIter, " != 20"), echo(",\n\t\t\tn.iter=", hornNumIter)),
+  tf(errorBars, opt="error.bars", level=4), # FALSE
+  tf(SMCs, opt="SMC", level=4), # FALSE
+  # prll.ylabel # NULL
+  tf(showLegend, opt="show.legend", true=FALSE, not=TRUE, level=4), # TRUE
+  echo(")")
 )
 
 ## make a whole component
 prll.component <- rk.plugin.component("Parallel analysis (Horn)",
-	xml=list(
-		dialog=prll.full.dialog),
-	js=list(
-		require="psych",
-		doPrintout=prll.js.print),
-	guess.getter=guess.getter,
-	hierarchy=list("analysis", "Factor analysis","Number of factors"),
-	create=c("xml", "js"))
+  xml=list(
+    dialog=prll.full.dialog),
+  js=list(
+    require="psych",
+    doPrintout=prll.js.print),
+  guess.getter=guess.getter,
+  hierarchy=list("analysis", "Factor analysis","Number of factors"),
+  create=c("xml", "js"))
 
 ############
 ## VSS & MAP
 ############
 # vss(x, n = 8, rotate = "varimax", diagonal = FALSE, fm = "minres", n.obs=NULL,plot=TRUE,title="Very Simple Structure",...)
 
-vss.var.select <- rk.XML.varselector(label="Select data.frame/matrix")
-vss.var.data <- rk.XML.varslot(label="Data", source=vss.var.select, required=TRUE)
+vssData <- rk.XML.varselector(label="Select data.frame/matrix", id.name="vssData")
+vssDataSelected <- rk.XML.varslot(label="Data", source=vssData, required=TRUE, id.name="vssDataSelected")
 
 # minres, ml, uls, wls, gls, pa
-vss.factmeth <- rk.XML.dropdown("Factoring method", options=list(
-		"Minimum residual factoring (ULS)"=c(val="minres", chk=TRUE),
-		"Principal component analysis"=c(val="pc"),
-		"Principal axis factor analysis"=c(val="pa"),
-		"Maximum likelihood factor analysis"=c(val="ml")
-	), id.name="drp_vss_factmeth")
+vssFactorMethod <- rk.XML.dropdown("Factoring method",
+  options=list(
+    "Minimum residual factoring (ULS)"=c(val="minres", chk=TRUE),
+    "Principal component analysis"=c(val="pc"),
+    "Principal axis factor analysis"=c(val="pa"),
+    "Maximum likelihood factor analysis"=c(val="ml")
+  ),
+  id.name="vssFactorMethod"
+)
 
-vss.drp.rotation <- rk.XML.dropdown("Rotation method", options=list(
-		"None"=c(val="none"),
-		"Varimax (orthogonal)"=c(val="varimax", chk=TRUE),
-		"Promax"=c(val="promax"),
-		"Oblimin"=c(val="oblimin")
-	), id.name="drp_vss_rotate")
+vssRotate <- rk.XML.dropdown("Rotation method",
+  options=list(
+    "None"=c(val="none"),
+    "Varimax (orthogonal)"=c(val="varimax", chk=TRUE),
+    "Promax"=c(val="promax"),
+    "Oblimin"=c(val="oblimin")
+  ),
+  id.name="vssRotate"
+)
 
-vss.spin.nfactors <- rk.XML.spinbox("Number of factors to extract", min=1, initial=8, real=FALSE)
+vssNumFactors <- rk.XML.spinbox("Number of factors to extract", min=1, initial=8, real=FALSE, id.name="vssNumFactors")
 
-vss.main <- rk.XML.input(label="Main title", initial="Very Simple Structure")
+vssMainTitle <- rk.XML.input(label="Main title", initial="Very Simple Structure", id.name="vssMainTitle")
 
-vss.spin.nobs <- rk.XML.spinbox("Number of observations", min=0, initial=1000, real=FALSE)
+vssNumObs <- rk.XML.spinbox("Number of observations", min=0, initial=1000, real=FALSE, id.name="vssNumObs")
 
-vss.cbox.diag <- rk.XML.cbox("Fit the diagonal as well")
+fitDiag <- rk.XML.cbox("Fit the diagonal as well", id.name="fitDiag")
 
 # plot options
-vss.cbox.line <- rk.XML.cbox("Connect different complexities")
+connectDiffCplx <- rk.XML.cbox("Connect different complexities", id.name="connectDiffCplx")
 vss.preview <- rk.XML.preview()
-vss.frame.plot <- rk.XML.frame(
-	vss.main,
-	vss.cbox.line,
-	vss.preview, label="Plot results", checkable=TRUE)
+vssPlotResults <- rk.XML.frame(
+  vssMainTitle,
+  connectDiffCplx,
+  vss.preview,
+  label="Plot results",
+  checkable=TRUE,
+  id.name="vssPlotResults"
+)
 
-vss.save.results <- rk.XML.saveobj("Save data to workspace", initial="VSS.data")
+vssSaveResults <- rk.XML.saveobj("Save data to workspace", initial="VSS.data", id.name="vssSaveResults")
 
 vss.full.dialog <- rk.XML.dialog(
-	rk.XML.row(
-		vss.var.select,
-		rk.XML.col(
-			vss.var.data,
-			vss.factmeth,
-			vss.spin.nobs,
-			vss.drp.rotation,
-			vss.cbox.diag,
-			rk.XML.stretch(),
-			vss.frame.plot,
-			vss.save.results
-		)
-	)
+  rk.XML.row(
+    vssData,
+    rk.XML.col(
+      vssDataSelected,
+      vssFactorMethod,
+      vssNumObs,
+      vssRotate,
+      fitDiag,
+      rk.XML.stretch(),
+      vssPlotResults,
+      vssSaveResults
+    )
+  )
 , label="VSS/MAP")
 
 ## logic section
-	vss.lgc.sect <- rk.XML.logic(
-		vss.gov.factmeth <- rk.XML.convert(sources=list(string=vss.factmeth), mode=c(equals="ml")),
-		rk.XML.connect(governor=vss.gov.factmeth, client=vss.spin.nobs, set="enabled")
-	)
+  vss.lgc.sect <- rk.XML.logic(
+    vss.gov.factmeth <- rk.XML.convert(sources=list(string=vssFactorMethod), mode=c(equals="ml")),
+    rk.XML.connect(governor=vss.gov.factmeth, client=vssNumObs, set="enabled")
+  )
 
 ## JavaScript
 vss.js.calc <- rk.paste.JS(
-	echo("\t\tVSS.data <- VSS("),
-	ite(vss.var.data, echo("\n\t\t\t", vss.var.data)),
-	ite(id(vss.spin.nobs, " != 0"), echo(",\n\t\t\tn.obs=", vss.spin.nobs)), # NULL
-	ite(id(vss.factmeth, " != \"minres\""), echo(",\n\t\t\tfm=\"", vss.factmeth, "\"")),
-	ite(id(vss.drp.rotation, " != \"varimax\""), echo(",\n\t\t\trotate=\"", vss.drp.rotation, "\"")),
-	tf(vss.cbox.diag, opt="diagonal", level=4), # FALSE
-	echo(",\n\t\t\tplot=FALSE)\n"),
-	echo("\n\t\tvss.stat.vars <- c(\"dof\",\"chisq\",\"prob\",\"sqresid\",\"fit\",\"cfit.1\",\"cfit.2\")\n",
-	"\n\t\tvss.stat.results <- as.data.frame(cbind(Factors=1:length(VSS.data[[\"map\"]]), MAP=VSS.data[[\"map\"]], VSS.data[[\"vss.stats\"]][,vss.stat.vars]))\n",
-	"\t\tcolnames(vss.stat.results)[3:9] <- paste(\"VSS\", vss.stat.vars, sep=\".\")\n\n",
-	"\t\tmin.MAP <- which.min(VSS.data[[\"map\"]])\n",
-	"\t\tmin.VSS1 <- which.min(VSS.data[[\"cfit.1\"]])\n",
-	"\t\tmin.VSS2 <- which.min(VSS.data[[\"cfit.2\"]])\n\n")
+  echo("\t\tVSS.data <- VSS("),
+  ite(vssDataSelected, echo("\n\t\t\t", vssDataSelected)),
+  ite(id(vssNumObs, " != 0"), echo(",\n\t\t\tn.obs=", vssNumObs)), # NULL
+  ite(id(vssFactorMethod, " != \"minres\""), echo(",\n\t\t\tfm=\"", vssFactorMethod, "\"")),
+  ite(id(vssRotate, " != \"varimax\""), echo(",\n\t\t\trotate=\"", vssRotate, "\"")),
+  tf(fitDiag, opt="diagonal", level=4), # FALSE
+  echo(",\n\t\t\tplot=FALSE)\n"),
+  echo("\n\t\tvss.stat.vars <- c(\"dof\",\"chisq\",\"prob\",\"sqresid\",\"fit\",\"cfit.1\",\"cfit.2\")\n",
+  "\n\t\tvss.stat.results <- as.data.frame(cbind(Factors=1:length(VSS.data[[\"map\"]]), MAP=VSS.data[[\"map\"]], VSS.data[[\"vss.stats\"]][,vss.stat.vars]))\n",
+  "\t\tcolnames(vss.stat.results)[3:9] <- paste(\"VSS\", vss.stat.vars, sep=\".\")\n\n",
+  "\t\tmin.MAP <- which.min(VSS.data[[\"map\"]])\n",
+  "\t\tmin.VSS1 <- which.min(VSS.data[[\"cfit.1\"]])\n",
+  "\t\tmin.VSS2 <- which.min(VSS.data[[\"cfit.2\"]])\n\n")
 )
 
 vss.js.print <- rk.paste.JS(
-	vss.js.frame.plot <- rk.JS.vars(vss.frame.plot, modifiers="checked"),
-#  	echo("rk.print(VSS.data[[\"call\"]])\n"),
-	ite(vss.js.frame.plot, rk.paste.JS.graph(
-		echo("\t\tVSS.plot(VSS.data"),
-		ite(id(vss.main, " != \"Very Simple Structure\""), echo(",\n\t\t\ttitle=\"", vss.main, "\"")),
-		tf(vss.cbox.line, opt="line", level=4),
-		echo(")")
-	)),
-	echo("rk.header(\"Very Simple Structure\", level=4)\n",
-	"rk.print(paste(\"VSS complexity 1 achieves a maximimum of \", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), \" with \", min.VSS1, \" factors.\", sep=\"\"))\n",
-	"rk.print(paste(\"VSS complexity 2 achieves a maximimum of \", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), \" with \", min.VSS2, \" factors.\", sep=\"\"))\n",
-	"rk.header(\"Minimum Average Partial\", level=4)\n",
-	"rk.print(paste(\"The Velicer MAP criterion achieves a minimum of \", round(VSS.data[[\"map\"]][min.MAP], digits=3), \" with \", min.MAP, \" factors.\", sep=\"\"))\n",
-	"rk.header(\"Statistics\", level=4)\n",
-	"rk.results(vss.stat.results)\n\n")
+  vss.js.frame.plot <- rk.JS.vars(vssPlotResults, modifiers="checked"),
+#    echo("rk.print(VSS.data[[\"call\"]])\n"),
+  ite(vss.js.frame.plot, rk.paste.JS.graph(
+    echo("\t\tVSS.plot(VSS.data"),
+    ite(id(vssMainTitle, " != \"Very Simple Structure\""), echo(",\n\t\t\ttitle=\"", vssMainTitle, "\"")),
+    tf(connectDiffCplx, opt="line", level=4),
+    echo(")")
+  )),
+  echo("rk.header(\"Very Simple Structure\", level=4)\n",
+  "rk.print(paste(\"VSS complexity 1 achieves a maximimum of \", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), \" with \", min.VSS1, \" factors.\", sep=\"\"))\n",
+  "rk.print(paste(\"VSS complexity 2 achieves a maximimum of \", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), \" with \", min.VSS2, \" factors.\", sep=\"\"))\n",
+  "rk.header(\"Minimum Average Partial\", level=4)\n",
+  "rk.print(paste(\"The Velicer MAP criterion achieves a minimum of \", round(VSS.data[[\"map\"]][min.MAP], digits=3), \" with \", min.MAP, \" factors.\", sep=\"\"))\n",
+  "rk.header(\"Statistics\", level=4)\n",
+  "rk.results(vss.stat.results)\n\n")
 )
 
 ## make a whole component
 vss.component <- rk.plugin.component("Very Simple Structure/Minimum Average Partial",
-	xml=list(
-		logic=vss.lgc.sect,
-		dialog=vss.full.dialog),
-	js=list(
-		require="psych",
-		calculate=vss.js.calc,
-		doPrintout=vss.js.print),
-	guess.getter=guess.getter,
-	hierarchy=list("analysis", "Factor analysis","Number of factors"),
-	create=c("xml", "js"))
+  xml=list(
+    logic=vss.lgc.sect,
+    dialog=vss.full.dialog),
+  js=list(
+    require="psych",
+    calculate=vss.js.calc,
+    doPrintout=vss.js.print),
+  guess.getter=guess.getter,
+  hierarchy=list("analysis", "Factor analysis","Number of factors"),
+  create=c("xml", "js"))
 
 
 ############
 ## correlation plot
 ############
-crplt.var.select <- rk.XML.varselector(label="Select data")
-crplt.var.data <- rk.XML.varslot(label="Data (correaltaion/factor matrix)",
-	source=crplt.var.select,
-#	classes=c("data.frame", "matrix"),
-	required=TRUE)
+crpltData <- rk.XML.varselector(label="Select data", id.name="crpltData")
+crpltDataSelected <- rk.XML.varslot(label="Data (correaltaion/factor matrix)",
+  source=crpltData,
+#  classes=c("data.frame", "matrix"),
+  required=TRUE,
+  id.name="crpltDataSelected")
 
-crplt.main <- rk.XML.input(label="Main title", initial="Correlation plot")
+crpltMainTitle <- rk.XML.input(label="Main title", initial="Correlation plot", id.name="crpltMainTitle")
 
-crplt.radio.colors <- rk.XML.radio(label="Colors", options=list(
-		"Red to Blue"=c(val="true", chk=TRUE),
-		"Greyscale"=c(val="false")
-	))
-crplt.spin.shades <- rk.XML.spinbox(label="Number of shades", min=2, initial=51, real=FALSE)
+colors <- rk.XML.radio(label="Colors",
+  options=list(
+    "Red to Blue"=c(val="true", chk=TRUE),
+    "Greyscale"=c(val="false")
+  ),
+  id.name="colors"
+)
+numShades <- rk.XML.spinbox(label="Number of shades", min=2, initial=51, real=FALSE, id.name="numShades")
 
-crplt.spin.lower <- rk.XML.spinbox(label="from", min=-1, max=1, initial=-1)
-crplt.spin.upper <- rk.XML.spinbox(label="to", min=-1, max=1, initial=1)
-crplt.range <- rk.XML.frame(rk.XML.row(rk.XML.col(crplt.spin.lower, id.name="clm_spnbxlower"),rk.XML.col(crplt.spin.upper, id.name="clm_spnbxupper")), label="Range of correlation values to color")
+spinLower <- rk.XML.spinbox(label="from", min=-1, max=1, initial=-1, id.name="spinLower")
+spinUpper <- rk.XML.spinbox(label="to", min=-1, max=1, initial=1, id.name="spinUpper")
+rangeToColor <- rk.XML.frame(
+  rk.XML.row(
+    rk.XML.col(
+      spinLower,
+      id.name="clmSpnbxlower"
+    ),
+    rk.XML.col(
+      spinUpper,
+      id.name="clmSpnbxupper"
+    )
+  ),
+  label="Range of correlation values to color",
+  id.name="rangeToColor"
+)
 
-crplt.spin.nlabels <- rk.XML.spinbox(label="Number of categories in legend", min=1, initial=10, real=FALSE)
+numCat <- rk.XML.spinbox(label="Number of categories in legend", min=1, initial=10, real=FALSE, id.name="numCat")
 
 crplt.preview <- rk.XML.preview()
 
 crplt.full.dialog <- rk.XML.dialog(
-	rk.XML.row(
-		crplt.var.select,
-		rk.XML.col(
-			crplt.var.data,
-			crplt.radio.colors,
-			crplt.range,
-			crplt.spin.shades,
-			rk.XML.stretch(),
-			crplt.main,
-			crplt.chk.lables <- rk.XML.frame(crplt.spin.nlabels,
-				checkable=TRUE, chk=TRUE, label="Show legend"),
-			crplt.preview
-		)
-	),
-	label="Correlation plot")
+  rk.XML.row(
+    crpltData,
+    rk.XML.col(
+      crpltDataSelected,
+      colors,
+      rangeToColor,
+      numShades,
+      rk.XML.stretch(),
+      crpltMainTitle,
+      crpltShowLegend <- rk.XML.frame(
+        numCat,
+        checkable=TRUE,
+        chk=TRUE,
+        label="Show legend",
+        id.name="crpltShowLegend"),
+      crplt.preview
+    )
+  ),
+  label="Correlation plot")
 
 ## JavaScript
 crplt.js.print <- rk.paste.JS(
-	js.chk.lables <- rk.JS.vars(crplt.chk.lables, modifiers="checked"),
-	rk.paste.JS.graph(
-		echo("\t\tcor.plot("),
-		ite(crplt.var.data, echo("\n\t\t\tr=", crplt.var.data)),
-		ite(id(crplt.radio.colors, " == \"false\""), echo(",\n\t\t\tcolors=FALSE")),
-		ite(id(crplt.spin.shades, " != 51"), echo(",\n\t\t\tn=",crplt.spin.shades)),
-		ite(id(crplt.main, " != \"Correlation plot\""), echo(",\n\t\t\tmain=\"", crplt.main, "\"")),
-		ite(id(crplt.spin.lower, " != -1 | ", crplt.spin.upper, " != 1"),
-			echo(",\n\t\t\tzlim=c(",crplt.spin.lower,",",crplt.spin.upper, ")")),
-		ite(js.chk.lables,
-			rk.paste.JS(
-				ite(id(crplt.spin.nlabels, " != 10"), echo(",\n\t\t\tn.legend=", crplt.spin.nlabels)),
-				level=1),
-			echo(",\n\t\t\tshow.legend=FALSE")),
-		echo("\n\t\t)")
-	)
+  js.chk.lables <- rk.JS.vars(crpltShowLegend, modifiers="checked"),
+  rk.paste.JS.graph(
+    echo("\t\tcor.plot("),
+    ite(crpltDataSelected, echo("\n\t\t\tr=", crpltDataSelected)),
+    ite(id(colors, " == \"false\""), echo(",\n\t\t\tcolors=FALSE")),
+    ite(id(numShades, " != 51"), echo(",\n\t\t\tn=",numShades)),
+    ite(id(crpltMainTitle, " != \"Correlation plot\""), echo(",\n\t\t\tmain=\"", crpltMainTitle, "\"")),
+    ite(id(spinLower, " != -1 | ", spinUpper, " != 1"),
+      echo(",\n\t\t\tzlim=c(",spinLower,",",spinUpper, ")")),
+    ite(js.chk.lables,
+      rk.paste.JS(
+        ite(id(numCat, " != 10"), echo(",\n\t\t\tn.legend=", numCat)),
+        level=1),
+      echo(",\n\t\t\tshow.legend=FALSE")),
+    echo("\n\t\t)")
+  )
 )
 
 ## make a whole component
 crplt.component <- rk.plugin.component("Correlation plot",
-	xml=list(
-		dialog=crplt.full.dialog),
-	js=list(results.header="Correlation plot",
-		require="psych",
- 		doPrintout=crplt.js.print),
-	guess.getter=guess.getter,
-	hierarchy=list("plots", "Factor analysis"),
-	create=c("xml", "js"))
+  xml=list(
+    dialog=crplt.full.dialog),
+  js=list(results.header="Correlation plot",
+    require="psych",
+     doPrintout=crplt.js.print),
+  guess.getter=guess.getter,
+  hierarchy=list("plots", "Factor analysis"),
+  create=c("xml", "js"))
 
 
 #############
@@ -682,30 +779,30 @@ crplt.component <- rk.plugin.component("Correlation plot",
 # this is where it get's serious, that is, here all of the above is put together into one plugin
 
 rk.FactorAnalysis.dir <<- rk.plugin.skeleton(
-	about.info,
-	path=output.dir,
-	guess.getter=guess.getter,
-	xml=list(
-		logic=lgc.sect,
-		dialog=full.dialog),
-	js=list(
-		globals="var isObrot;",
-		results.header=FALSE,
-		require="psych",
-		calculate=js.calc,
-		printout=js.print),
-	pluginmap=list(name="Factor analysis", hierarchy=list("analysis", "Factor analysis")),
-	components=list(
-		scree.component,
-		crplt.component,
-		prll.component,
-		vss.component),
-	dependencies=dependencies.info,
-	create=c("pmap", "xml", "js", "desc"),
-	overwrite=overwrite,
-	tests=FALSE,
-#	edit=TRUE,
-#	show=TRUE,
-	load=TRUE,
-	hints=FALSE)
+  about.info,
+  path=output.dir,
+  guess.getter=guess.getter,
+  xml=list(
+    logic=lgc.sect,
+    dialog=full.dialog),
+  js=list(
+    globals="var isObrot;",
+    results.header=FALSE,
+    require="psych",
+    calculate=js.calc,
+    printout=js.print),
+  pluginmap=list(name="Factor analysis", hierarchy=list("analysis", "Factor analysis")),
+  components=list(
+    scree.component,
+    crplt.component,
+    prll.component,
+    vss.component),
+  dependencies=dependencies.info,
+  create=c("pmap", "xml", "js", "desc"),
+  overwrite=overwrite,
+  tests=FALSE,
+#  edit=TRUE,
+#  show=TRUE,
+  load=TRUE,
+  hints=FALSE)
 })
