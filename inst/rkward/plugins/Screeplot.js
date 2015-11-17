@@ -49,23 +49,23 @@ function doPrintout(full){
   // the actual plot:
   echo("\t\tscree(");
   if(screeDataSelected) {
-    echo("\n\t\t\t" + screeDataSelected);
+    echo("\n\t\t\t" + screeDataSelected);  
   } else {}
   if(screeType == "comp") {
-    echo(",\n\t\t\tfactors=FALSE");
+    echo(",\n\t\t\tfactors=FALSE");  
   } else {}
   if(screeType == "fact") {
-    echo(",\n\t\t\tpc=FALSE");
+    echo(",\n\t\t\tpc=FALSE");  
   } else {}
   if(mainTitle != "Scree plot") {
-    echo(",\n\t\t\tmain=\"" + mainTitle + "\"");
+    echo(",\n\t\t\tmain=\"" + mainTitle + "\"");  
   } else {}
   if(horizLineChecked) {
     if(eigenvalue != 1) {
-  echo(",\n\t\t\thline=" + eigenvalue);
-} else {}
+      echo(",\n\t\t\thline=" + eigenvalue);  
+    } else {}  
   } else {
-    echo(",\n\t\t\thline=-1");
+    echo(",\n\t\t\thline=-1");  
   }
   echo(")");
 

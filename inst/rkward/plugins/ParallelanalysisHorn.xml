@@ -1,14 +1,14 @@
 <!DOCTYPE rkplugin >
 <document>
-  <!-- this code was generated using the rkwarddev package.
-    perhaps don't make changes here, but in the rkwarddev script instead! -->
+  <!--   this code was generated using the rkwarddev package.
+        perhaps don't make changes here, but in the rkwarddev script instead! -->
   <code file="ParallelanalysisHorn.js" />
   <help file="ParallelanalysisHorn.rkh" />
-  <!-- <dependencies>
-      </dependencies> -->
+  <!--   <dependencies>
+        </dependencies> -->
   <logic>
-    <!-- <convert id="!edit!" sources="!edit!" mode="equals" standard="!edit!" /> -->
-    <!-- <connect governor="!edit!.state" client="!edit!.enabled" /> -->
+    <!--     <convert id="!edit!" sources="!edit!" mode="equals" standard="!edit!" /> -->
+    <!--     <connect governor="!edit!.state" client="!edit!.enabled" /> -->
   </logic>
   <dialog label="Parallel analysis">
     <row id="row_vDSDSDDMMT">

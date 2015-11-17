@@ -53,22 +53,22 @@ function doPrintout(full){
   // the actual plot:
   echo("\t\tparallel.data <- fa.parallel(");
   if(hornDataSelected) {
-    echo("\n\t\t\t" + hornDataSelected);
+    echo("\n\t\t\t" + hornDataSelected);  
   } else {}
   if(hornNumObs != 0) {
-    echo(",\n\t\t\tn.obs=" + hornNumObs);
+    echo(",\n\t\t\tn.obs=" + hornNumObs);  
   } else {}
   if(hornFactorMethod != "minres") {
-    echo(",\n\t\t\tfm=\"" + hornFactorMethod + "\"");
+    echo(",\n\t\t\tfm=\"" + hornFactorMethod + "\"");  
   } else {}
   if(eigenvalueType != "both") {
-    echo(",\n\t\t\tfa=\"" + eigenvalueType + "\"");
+    echo(",\n\t\t\tfa=\"" + eigenvalueType + "\"");  
   } else {}
   if(hornMainTitle != "Parallel Analysis Scree Plots") {
-    echo(",\n\t\t\tmain=\"" + hornMainTitle + "\"");
+    echo(",\n\t\t\tmain=\"" + hornMainTitle + "\"");  
   } else {}
   if(hornNumIter != 20) {
-    echo(",\n\t\t\tn.iter=" + hornNumIter);
+    echo(",\n\t\t\tn.iter=" + hornNumIter);  
   } else {}
   if(errorBars) {
     echo(",\n      error.bars=TRUE");
