@@ -1,11 +1,11 @@
 <!DOCTYPE rkplugin >
 <document>
-  <!-- this code was generated using the rkwarddev package.
-    perhaps don't make changes here, but in the rkwarddev script instead! -->
+  <!--   this code was generated using the rkwarddev package.
+        perhaps don't make changes here, but in the rkwarddev script instead! -->
   <code file="Factoranalysis.js" />
   <help file="Factoranalysis.rkh" />
-  <!-- <dependencies>
-      </dependencies> -->
+  <!--   <dependencies>
+        </dependencies> -->
   <logic>
     <convert id="lgc_fctrMPCA" sources="factorMethod.string" mode="equals" standard="PCA" />
     <convert id="lgc_crrMthdf" sources="corrMethod.string" mode="equals" standard="fa" />

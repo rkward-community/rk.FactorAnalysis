@@ -52,26 +52,26 @@ function doPrintout(full){
   // the actual plot:
   echo("\t\tcor.plot(");
   if(crpltDataSelected) {
-    echo("\n\t\t\tr=" + crpltDataSelected);
+    echo("\n\t\t\tr=" + crpltDataSelected);  
   } else {}
   if(colors == "false") {
-    echo(",\n\t\t\tcolors=FALSE");
+    echo(",\n\t\t\tcolors=FALSE");  
   } else {}
   if(numShades != 51) {
-    echo(",\n\t\t\tn=" + numShades);
+    echo(",\n\t\t\tn=" + numShades);  
   } else {}
   if(crpltMainTitle != "Correlation plot") {
-    echo(",\n\t\t\tmain=\"" + crpltMainTitle + "\"");
+    echo(",\n\t\t\tmain=\"" + crpltMainTitle + "\"");  
   } else {}
-  if(spinLower != -1 | spinUpper != 1) {
-    echo(",\n\t\t\tzlim=c(" + spinLower + "," + spinUpper + ")");
+  if(spinLower != 1 -  || spinUpper != 1) {
+    echo(",\n\t\t\tzlim=c(" + spinLower + "," + spinUpper + ")");  
   } else {}
   if(crpltShowLegendChecked) {
     if(numCat != 10) {
-  echo(",\n\t\t\tn.legend=" + numCat);
-} else {}
+      echo(",\n\t\t\tn.legend=" + numCat);  
+    } else {}  
   } else {
-    echo(",\n\t\t\tshow.legend=FALSE");
+    echo(",\n\t\t\tshow.legend=FALSE");  
   }
   echo("\n\t\t)");
 

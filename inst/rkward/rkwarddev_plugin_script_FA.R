@@ -258,46 +258,87 @@ js.frm.iterate <- rk.JS.vars(iterate, modifiers="checked")
 js.calc <- rk.paste.JS(
   # create a variable for oblique transformations
   "var obrot = new Array(\"promax\", \"oblimin\", \"simplimax\", \"bentlerQ\", \"geominQ\", \"biquartimin\", \"cluster\");\n",
-  ite(id("(obrot.indexOf(",rotationMethodEFA ,") == -1 && ", factorMethod,
+  js(
+    if(id("(obrot.indexOf(",rotationMethodEFA ,") == -1 && ", factorMethod,
     " != \"PCA\") | (obrot.indexOf(", rotationMethodPCA ,") == -1 && ", factorMethod,
-    " == \"PCA\")"),
-  "isObrot = false;", "isObrot = true;"),
+    " == \"PCA\")")){
+      "isObrot = false;"
+    } else {
+      "isObrot = true;"
+    }
+  ),
   echo("\tFA.results <- "),
-  ite(id(factorMethod, " == \"PCA\""),
-    echo("principal("),
-    ite(kaiser,
-      echo("kaiser(", corrMethod, "("),
-      echo(corrMethod, "("))),
-  ite(dataSelected, 
-    ite(id(factorMethod, " == \"EFA\" && ", corrMethod, " == \"fa.poly\""),
-      echo("x=", dataSelected),
-      echo("r=", dataSelected))),
-  ite(id(numFactors, " > 1"), echo(",\n\t\tnfactors=", numFactors)),
-  ite(id(factorMethod, " == \"PCA\" || ", corrMethod, " == \"fa\""),
-    tf(showResiduals, opt="residuals")),
-  ite(id(factorMethod, " == \"PCA\""),
-    echo(",\n\t\trotate=\"", rotationMethodPCA, "\""),
-    ite(kaiser,
-      echo(",\n\t\trotate=\"none\""),
-      echo(",\n\t\trotate=\"", rotationMethodEFA, "\""))),
-  ite(id(numObs, " > 0"), echo(",\n\t\tn.obs=", numObs)),
-  ite(id(factorMethod, " == \"PCA\""),
-    rk.paste.JS(
-      ite(js.frm.score, echo(",\n\t\tscores=TRUE")),
-      ite(id(js.frm.score, " & ", missingsPCA, " != \"none\""), echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", missingsPCA, "\"")),
-    level=3),
-    rk.paste.JS(
-      ite(id(js.frm.iterate), echo(",\n\t\tn.iter=", numIter)),
-      ite(id(corrMethod, " == \"fa\""), echo(",\n\t\tscores=\"", factorScoreMethod, "\"")),
-      ite(id(initCommunalityEst, " == \"false\""), echo(",\n\t\tSMC=FALSE")),
-      ite(id(corrMethod, " == \"fa\" && ", matrixToFactor, " == \"true\"" ), echo(",\n\t\tcovar=TRUE")),
-      ite(id(missingsEFA, " != \"none\""), echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", missingsEFA, "\"")),
-      ite(id(js.frm.iterate, " & ", minErr, " != 0.001"), echo(",\n\t\tmin.err=", minErr)),
-      ite(id(js.frm.iterate, " & ", maxIter, " != 50"), echo(",\n\t\tmax.iter=", maxIter)),
-      echo(",\n\t\tfm=\"", factorMethodEFA, "\""),
-      ite(id(matrixToScore, " == \"false\"" ), echo(",\n\t\toblique.scores=FALSE")),
-    level=3)),
-  ite(id(factorMethod, " == \"EFA\" && ", kaiser), echo("), rotate=\"", rotationMethodEFA, "\"")),
+  js(
+    if(factorMethod == "PCA"){
+      echo("principal(")
+    } else if(kaiser){
+      echo("kaiser(", corrMethod, "(")
+    } else {
+      echo(corrMethod, "(")
+    },
+    if(dataSelected){ 
+      if(factorMethod == "EFA" && corrMethod == "fa.poly"){
+        echo("x=", dataSelected)
+      } else {
+        echo("r=", dataSelected)
+      }
+    } else {},
+    if(numFactors > 1){
+      echo(",\n\t\tnfactors=", numFactors)
+    } else {},
+    if((factorMethod == "PCA" || corrMethod == "fa") && showResiduals){
+      echo(",\n\t\tresiduals=TRUE")
+    } else {},
+    if(factorMethod == "PCA"){
+      echo(",\n\t\trotate=\"", rotationMethodPCA, "\"")
+    } else {
+      if(kaiser){
+        echo(",\n\t\trotate=\"none\"")
+      } else {
+        echo(",\n\t\trotate=\"", rotationMethodEFA, "\"")
+      }
+    },
+    if(numObs > 0){
+      echo(",\n\t\tn.obs=", numObs)
+    } else {},
+    if(factorMethod == "PCA"){
+      if(js.frm.score){
+        echo(",\n\t\tscores=TRUE")
+      } else {}
+      if(js.frm.score && missingsPCA != "none"){
+        echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", missingsPCA, "\"")
+      } else {}
+    } else {
+      if(js.frm.iterate){
+        echo(",\n\t\tn.iter=", numIter)
+      } else {}
+      if(corrMethod == "fa"){
+        echo(",\n\t\tscores=\"", factorScoreMethod, "\"")
+      } else {}
+      if(initCommunalityEst == "false"){
+        echo(",\n\t\tSMC=FALSE")
+      } else {}
+      if(corrMethod == "fa" && matrixToFactor == "true"){
+        echo(",\n\t\tcovar=TRUE")
+      } else {}
+      if(missingsEFA != "none"){
+        echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"", missingsEFA, "\"")
+      } else {}
+      if(js.frm.iterate && minErr != 0.001){
+        echo(",\n\t\tmin.err=", minErr)
+      } else {}
+      if(js.frm.iterate && maxIter != 50){
+        echo(",\n\t\tmax.iter=", maxIter)
+      } else {}
+      echo(",\n\t\tfm=\"", factorMethodEFA, "\"")
+      if(matrixToScore == "false"){
+        echo(",\n\t\toblique.scores=FALSE")
+      } else {}
+    },
+    if(factorMethod == "EFA" && kaiser){
+      echo("), rotate=\"", rotationMethodEFA, "\"")
+    } else {}
+  ),
   echo(")\n\n")
 )
 
@@ -306,70 +347,83 @@ js.print <- rk.paste.JS(
     kaiser, showDecimals, cutoff),
   echo("\tdigits <- function(obj) {
     return(format(round(obj, digits=", showDecimals, "), nsmall=", showDecimals, "))
-  }
-  # Make matrix from loadings, for more flexible output
-  FA.load.dim <- dim(FA.results$loadings)
-  FA.load.names <- dimnames(FA.results$loadings)
-  # Nicen component names
-  FA.load.names[[2]] <- paste("),
-  ite(id(factorMethod, " == \"PCA\""),
-    echo("\"Component\""),
-    echo("\"Factor\"")
+  }\n"),
+  R.comment("Make matrix from loadings, for more flexible output"),
+  echo("\tFA.load.dim <- dim(FA.results$loadings)
+  FA.load.names <- dimnames(FA.results$loadings)\n"),
+  R.comment("Nicen component names"),
+  echo("\tFA.load.names[[2]] <- paste("),
+  js(
+    if(factorMethod == "PCA"){
+      echo("\"Component\"")
+    } else {
+      echo("\"Factor\"")
+    }
   ),
   echo(", 1:length(FA.load.names[[2]]))
   FA.load <- FA.results$loadings[!is.character(FA.results$loadings)]
-  FA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)
-  # For printout, highlight loadings
-  idx.load <- FA.load >= ", cutoff, "
+  FA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)\n"),
+  R.comment("For printout, highlight loadings"),
+  echo("\tidx.load <- FA.load >= ", cutoff, "
   FA.load.print <- digits(FA.load)
   FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")
-  FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)
-  # Append communality and uniqueness
-  FA.load.print <- cbind(FA.load.print,
+  FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)\n"),
+  R.comment("Append communality and uniqueness"),
+  echo("\tFA.load.print <- cbind(FA.load.print,
     \"communality\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),
-    \"uniqueness\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))
-  # Append sum of squared loadings\n"),
-  ite("isObrot",
-    echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n"),
-    echo("\tFA.s2load <- colSums(FA.results$loadings^2)\n")
+    \"uniqueness\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n"),
+  R.comment("Append sum of squared loadings"),
+  js(
+    if("isObrot"){
+      echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n")
+    } else {
+      echo("\tFA.s2load <- colSums(FA.results$loadings^2)\n")
+    }
   ),
-  echo("\t# Variance explained
-  FA.varExp <- 100 * FA.s2load / FA.load.dim[1]
+  R.comment("Variance explained"),
+  echo("\tFA.varExp <- 100 * FA.s2load / FA.load.dim[1]
   FA.load.print <- rbind(FA.load.print,
     \"Sum of squared loadings\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.s2load), \"</span>\", sep=\"\"),
     digits(sum(FA.s2load)), \"\"),
     \"Variance explained (%)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.varExp), \"</span>\", sep=\"\"), \"\", \"\"),
-    \"Variance explained (cum %)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))
-  # Finally, make it a data.frame
-  FA.load.print <- data.frame(FA.load.print, stringsAsFactors=FALSE)\n"),
-  ite("isObrot",
-    echo("\t# Prepare correlation matrix for printout
-    comp.corr <- digits(FA.results$Phi)
-    dimnames(comp.corr) <- list(FA.load.names[[2]],FA.load.names[[2]])\n")
+    \"Variance explained (cum %)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))\n"),
+  R.comment("Finally, make it a data.frame"),
+  echo("\tFA.load.print <- data.frame(FA.load.print, stringsAsFactors=FALSE)\n"),
+  js(
+    if("isObrot"){
+      R.comment("Prepare correlation matrix for printout")
+      echo("\tcomp.corr <- digits(FA.results$Phi)
+  dimnames(comp.corr) <- list(FA.load.names[[2]],FA.load.names[[2]])\n")
+    } else {}
   ),
-  echo("\t# Prepare score*factors matrix for printout
-  scfc.corr <- data.frame(rbind(
+  R.comment("Prepare score*factors matrix for printout"),
+  echo("\tscfc.corr <- data.frame(rbind(
     \"Correlation of scores with factors\"=digits(sqrt(FA.results$R2)),
     \"Multiple R square of scores with factors\"=digits(FA.results$R2),
     \"Minimum correlation of possible factor scores\"=digits((2*FA.results$R2)-1)), stringsAsFactors=FALSE)
-  colnames(scfc.corr) <- FA.load.names[[2]]
-
-  # Ok, here the actual output starts\n"),
-  ite(id(factorMethod, " == \"PCA\""),
-    echo("rk.header(\"Principal Component Analysis\""),
-    echo("rk.header(\"Factor Analysis\"")
+  colnames(scfc.corr) <- FA.load.names[[2]]\n\n"),
+  R.comment("Ok, here the actual output starts", level=1),
+  js(
+    if(factorMethod == "PCA"){
+      echo("rk.header(\"Principal Component Analysis\"")
+    } else {
+      echo("rk.header(\"Factor Analysis\"")
+    }
   ),
   echo(",\n\tparameters=list("),
-  ite(id(factorMethod, " == \"PCA\""),
-    echo("\t\t\"Number of components\", ", numFactors, ",\n",
-    "\t\t\"Rotation\", \"", rotationMethodPCA, "\""
-    ),
-    rk.paste.JS(
+  js(
+    if(factorMethod == "PCA"){
+      echo("\t\t\"Number of components\", ", numFactors, ",\n",
+      "\t\t\"Rotation\", \"", rotationMethodPCA, "\""
+      )
+    } else {
       echo("\t\t\"Number of factors\", ", numFactors, ",\n",
       "\t\t\"Factoring method\", \"", factorMethodEFA,"\",\n",
-      "\t\t\"Rotation\", \"", rotationMethodEFA, "\""),
-      ite(kaiser, echo(",\n\t\t\"Normalization\", \"Kaiser\"")),
-    level=3)
+      "\t\t\"Rotation\", \"", rotationMethodEFA, "\"")
+      if(kaiser){
+        echo(",\n\t\t\"Normalization\", \"Kaiser\"")
+      } else {}
+    }
   ),
   echo("))\n"), # end rk.header()
   echo("rk.results(list(
@@ -379,8 +433,10 @@ js.print <- rk.paste.JS(
   ))\n"),
   echo("rk.header(\"Loadings\", level=4)\n"),
   echo("rk.results(FA.load.print)\n"),
-  ite("isObrot",
-    echo("rk.header(\"Factor correlations\", level=4)\nrk.results(data.frame(comp.corr, stringsAsFactors=FALSE))\n")
+  js(
+    if("isObrot"){
+      echo("rk.header(\"Factor correlations\", level=4)\nrk.results(data.frame(comp.corr, stringsAsFactors=FALSE))\n")
+    } else {}
   ),
 #  echo("rk.header(\"Test of the hypothesis that ", numFactors, " factors are sufficient\", level=4)\n"),
   echo("rk.header(\"Measures of factor score adequacy\", level=4)\n"),
@@ -440,13 +496,27 @@ scree.js.print <- rk.paste.JS(
   scree.chk.hline <- rk.JS.vars(horizLine, modifiers="checked"),
   rk.paste.JS.graph(
     echo("\t\tscree("),
-    ite(screeDataSelected, echo("\n\t\t\t", screeDataSelected)),
-    ite(id(screeType, " == \"comp\""), echo(",\n\t\t\tfactors=FALSE")),
-    ite(id(screeType, " == \"fact\""), echo(",\n\t\t\tpc=FALSE")),
-    ite(id(mainTitle, " != \"Scree plot\""), echo(",\n\t\t\tmain=\"", mainTitle, "\"")),
-    ite(scree.chk.hline,
-      rk.paste.JS(ite(id(eigenvalue, " != 1"), echo(",\n\t\t\thline=", eigenvalue)), level=1),
-      echo(",\n\t\t\thline=-1")),
+    js(
+      if(screeDataSelected){
+        echo("\n\t\t\t", screeDataSelected)
+      } else {},
+      if(screeType == "comp"){
+        echo(",\n\t\t\tfactors=FALSE")
+      } else {},
+      if(screeType == "fact"){
+        echo(",\n\t\t\tpc=FALSE")
+      } else {},
+      if(mainTitle != "Scree plot"){
+        echo(",\n\t\t\tmain=\"", mainTitle, "\"")
+      } else {},
+      if(scree.chk.hline){
+        if(eigenvalue != 1){
+          echo(",\n\t\t\thline=", eigenvalue)
+        } else {}
+      } else {
+        echo(",\n\t\t\thline=-1")
+      }
+    ),
     echo(")")
   )
 )
@@ -532,12 +602,26 @@ prll.full.dialog <- rk.XML.dialog(
 ## JavaScript
 prll.js.print <- rk.paste.JS.graph(
   echo("\t\tparallel.data <- fa.parallel("),
-  ite(hornDataSelected, echo("\n\t\t\t", hornDataSelected)),
-  ite(id(hornNumObs, " != 0"), echo(",\n\t\t\tn.obs=", hornNumObs)), # NULL
-  ite(id(hornFactorMethod, " != \"minres\""), echo(",\n\t\t\tfm=\"", hornFactorMethod, "\"")),
-  ite(id(eigenvalueType, " != \"both\""), echo(",\n\t\t\tfa=\"", eigenvalueType, "\"")),
-  ite(id(hornMainTitle, " != \"Parallel Analysis Scree Plots\""), echo(",\n\t\t\tmain=\"", hornMainTitle, "\"")),
-  ite(id(hornNumIter, " != 20"), echo(",\n\t\t\tn.iter=", hornNumIter)),
+  js(
+    if(hornDataSelected){
+      echo("\n\t\t\t", hornDataSelected)
+    } else {},
+    if(hornNumObs != 0){
+      echo(",\n\t\t\tn.obs=", hornNumObs) # NULL
+    } else {},
+    if(hornFactorMethod != "minres"){
+      echo(",\n\t\t\tfm=\"", hornFactorMethod, "\"")
+    } else {},
+    if(eigenvalueType != "both"){
+      echo(",\n\t\t\tfa=\"", eigenvalueType, "\"")
+    } else {},
+    if(hornMainTitle != "Parallel Analysis Scree Plots"){
+      echo(",\n\t\t\tmain=\"", hornMainTitle, "\"")
+    } else {},
+    if(hornNumIter != 20){
+      echo(",\n\t\t\tn.iter=", hornNumIter)
+    } else {}
+  ),
   tf(errorBars, opt="error.bars", level=4), # FALSE
   tf(SMCs, opt="SMC", level=4), # FALSE
   # prll.ylabel # NULL
@@ -632,10 +716,20 @@ vss.full.dialog <- rk.XML.dialog(
 ## JavaScript
 vss.js.calc <- rk.paste.JS(
   echo("\t\tVSS.data <- VSS("),
-  ite(vssDataSelected, echo("\n\t\t\t", vssDataSelected)),
-  ite(id(vssNumObs, " != 0"), echo(",\n\t\t\tn.obs=", vssNumObs)), # NULL
-  ite(id(vssFactorMethod, " != \"minres\""), echo(",\n\t\t\tfm=\"", vssFactorMethod, "\"")),
-  ite(id(vssRotate, " != \"varimax\""), echo(",\n\t\t\trotate=\"", vssRotate, "\"")),
+  js(
+    if(vssDataSelected){
+      echo("\n\t\t\t", vssDataSelected)
+    } else {},
+    if(vssNumObs != 0){
+      echo(",\n\t\t\tn.obs=", vssNumObs) # NULL
+    } else {},
+    if(vssFactorMethod != "minres"){
+      echo(",\n\t\t\tfm=\"", vssFactorMethod, "\"")
+    } else {},
+    if(vssRotate != "varimax"){
+      echo(",\n\t\t\trotate=\"", vssRotate, "\"")
+    } else {}
+  ),
   tf(fitDiag, opt="diagonal", level=4), # FALSE
   echo(",\n\t\t\tplot=FALSE)\n"),
   echo("\n\t\tvss.stat.vars <- c(\"dof\",\"chisq\",\"prob\",\"sqresid\",\"fit\",\"cfit.1\",\"cfit.2\")\n",
@@ -649,12 +743,22 @@ vss.js.calc <- rk.paste.JS(
 vss.js.print <- rk.paste.JS(
   vss.js.frame.plot <- rk.JS.vars(vssPlotResults, modifiers="checked"),
 #    echo("rk.print(VSS.data[[\"call\"]])\n"),
-  ite(vss.js.frame.plot, rk.paste.JS.graph(
-    echo("\t\tVSS.plot(VSS.data"),
-    ite(id(vssMainTitle, " != \"Very Simple Structure\""), echo(",\n\t\t\ttitle=\"", vssMainTitle, "\"")),
-    tf(connectDiffCplx, opt="line", level=4),
-    echo(")")
-  )),
+  js(
+    if(vss.js.frame.plot){
+      rk.paste.JS.graph(
+        echo("\t\tVSS.plot(VSS.data"),
+        js(
+          if(vssMainTitle != "Very Simple Structure"){
+            echo(",\n\t\t\ttitle=\"", vssMainTitle, "\"")
+          } else {},
+          if(connectDiffCplx){
+            echo(",\n\t\t\tline=TRUE")
+          } else {}
+        ),
+        echo(")")
+      )
+    } else {}
+  ),
   echo("rk.header(\"Very Simple Structure\", level=4)\n",
   "rk.print(paste(\"VSS complexity 1 achieves a maximimum of \", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), \" with \", min.VSS1, \" factors.\", sep=\"\"))\n",
   "rk.print(paste(\"VSS complexity 2 achieves a maximimum of \", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), \" with \", min.VSS2, \" factors.\", sep=\"\"))\n",
@@ -746,17 +850,30 @@ crplt.js.print <- rk.paste.JS(
   js.chk.lables <- rk.JS.vars(crpltShowLegend, modifiers="checked"),
   rk.paste.JS.graph(
     echo("\t\tcor.plot("),
-    ite(crpltDataSelected, echo("\n\t\t\tr=", crpltDataSelected)),
-    ite(id(colors, " == \"false\""), echo(",\n\t\t\tcolors=FALSE")),
-    ite(id(numShades, " != 51"), echo(",\n\t\t\tn=",numShades)),
-    ite(id(crpltMainTitle, " != \"Correlation plot\""), echo(",\n\t\t\tmain=\"", crpltMainTitle, "\"")),
-    ite(id(spinLower, " != -1 | ", spinUpper, " != 1"),
-      echo(",\n\t\t\tzlim=c(",spinLower,",",spinUpper, ")")),
-    ite(js.chk.lables,
-      rk.paste.JS(
-        ite(id(numCat, " != 10"), echo(",\n\t\t\tn.legend=", numCat)),
-        level=1),
-      echo(",\n\t\t\tshow.legend=FALSE")),
+    js(
+      if(crpltDataSelected){
+        echo("\n\t\t\tr=", crpltDataSelected)
+      } else {},
+      if(colors == "false"){
+        echo(",\n\t\t\tcolors=FALSE")
+      } else {},
+      if(numShades != 51){
+        echo(",\n\t\t\tn=",numShades)
+      } else {},
+      if(crpltMainTitle != "Correlation plot"){
+        echo(",\n\t\t\tmain=\"", crpltMainTitle, "\"")
+      } else {},
+      if(spinLower != -1 || spinUpper != 1){
+        echo(",\n\t\t\tzlim=c(",spinLower,",",spinUpper, ")")
+      } else {},
+      if(js.chk.lables){
+        if(numCat != 10){
+          echo(",\n\t\t\tn.legend=", numCat)
+        } else {}
+      } else {
+        echo(",\n\t\t\tshow.legend=FALSE")
+      }
+    ),
     echo("\n\t\t)")
   )
 )

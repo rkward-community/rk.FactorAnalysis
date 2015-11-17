@@ -23,16 +23,16 @@ function calculate(){
   // the R code to be evaluated
   echo("\t\tVSS.data <- VSS(");
   if(vssDataSelected) {
-    echo("\n\t\t\t" + vssDataSelected);
+    echo("\n\t\t\t" + vssDataSelected);  
   } else {}
   if(vssNumObs != 0) {
-    echo(",\n\t\t\tn.obs=" + vssNumObs);
+    echo(",\n\t\t\tn.obs=" + vssNumObs);  
   } else {}
   if(vssFactorMethod != "minres") {
-    echo(",\n\t\t\tfm=\"" + vssFactorMethod + "\"");
+    echo(",\n\t\t\tfm=\"" + vssFactorMethod + "\"");  
   } else {}
   if(vssRotate != "varimax") {
-    echo(",\n\t\t\trotate=\"" + vssRotate + "\"");
+    echo(",\n\t\t\trotate=\"" + vssRotate + "\"");  
   } else {}
   if(fitDiag) {
     echo(",\n      diagonal=TRUE");
@@ -84,10 +84,10 @@ function doPrintout(full){
   // the actual plot:
   echo("\t\tVSS.plot(VSS.data");
   if(vssMainTitle != "Very Simple Structure") {
-    echo(",\n\t\t\ttitle=\"" + vssMainTitle + "\"");
+    echo(",\n\t\t\ttitle=\"" + vssMainTitle + "\"");  
   } else {}
   if(connectDiffCplx) {
-    echo(",\n      line=TRUE");
+    echo(",\n\t\t\tline=TRUE");  
   } else {}
   echo(")");
 
@@ -96,7 +96,7 @@ function doPrintout(full){
   echo("\n  })\n");
   if(full) {
     echo("rk.graph.off()\n");
-  } else {}
+  } else {}  
   } else {}
   echo("rk.header(\"Very Simple Structure\", level=4)\n" + "rk.print(paste(\"VSS complexity 1 achieves a maximimum of \", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), \" with \", min.VSS1, \" factors.\", sep=\"\"))\n" + "rk.print(paste(\"VSS complexity 2 achieves a maximimum of \", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), \" with \", min.VSS2, \" factors.\", sep=\"\"))\n" + "rk.header(\"Minimum Average Partial\", level=4)\n" + "rk.print(paste(\"The Velicer MAP criterion achieves a minimum of \", round(VSS.data[[\"map\"]][min.MAP], digits=3), \" with \", min.MAP, \" factors.\", sep=\"\"))\n" + "rk.header(\"Statistics\", level=4)\n" + "rk.results(vss.stat.results)\n\n");
 

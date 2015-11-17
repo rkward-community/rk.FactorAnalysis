@@ -8,11 +8,8 @@ Maintainer: Meik Michalke <meik.michalke@hhu.de>
 Depends: rkward (>= 0.6.0)
 Suggests: psych (>= 1.1.10)
 Enhances: rkward
-Description: RKWard GUI to conduct principal component and factor
-        analysis (using the psych package). Also includes dialogs for
-        scree plots, correlation plots, VSS/MAP and parallel analysis.
+Description: RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis.
 License: GPL (>= 3)
 LazyLoad: yes
 URL: https://rkward.kde.org
-Authors@R: person(given="Meik", family="Michalke",
-        email="meik.michalke@hhu.de", role=c("aut", "cre"))
+Authors@R: person(given="Meik", family="Michalke", email="meik.michalke@hhu.de", role=c("aut", "cre"))
