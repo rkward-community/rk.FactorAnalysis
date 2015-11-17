@@ -1,150 +1,150 @@
 <!DOCTYPE rkpluginmap >
 <document 
-	base_prefix=""
-	namespace="Factoranalysis"
-	id="Factoranalysis_rkward"
-	po_id="Factoranalysis_rkward"
-	priority="medium"
+  base_prefix=""
+  namespace="Factoranalysis"
+  id="Factoranalysis_rkward"
+  po_id="Factoranalysis_rkward"
+  priority="medium"
 >
-	<!-- 
-		this code was generated using the rkwarddev package.
-			perhaps don't make changes here, but in the rkwarddev script instead! 
-	-->
-	<dependencies rkward_min_version="0.6.0">
-		<package 
-			name="psych"
-			min="1.1.10"
-		 />
-	</dependencies>
-	<about 
-		name="rk.FactorAnalysis"
-		shortinfo="RKWard GUI to conduct principal component and factor analysis"
-		longinfo="RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis."
-		version="0.01-13"
-		releasedate="2015-03-14"
-		url="https://rkward.kde.org"
-		license="GPL (&gt;= 3)"
-	>
-		<author 
-			given="Meik"
-			family="Michalke"
-			email="meik.michalke@hhu.de"
-			role="aut, cre"
-		 />
-	</about>
-	<require 
-		map="rkward::menu"
-	 />
-	<require 
-		map="rkward::embedded"
-	 />
-	<components>
-		<component 
-			id="cmp_FactoranalysisScreeplot"
-			label="Scree plot"
-			type="standard"
-			file="plugins/Screeplot.xml"
-		>
-		</component>
-		<component 
-			id="cmp_FactoranalysisCorreltnplt"
-			label="Correlation plot"
-			type="standard"
-			file="plugins/Correlationplot.xml"
-		>
-		</component>
-		<component 
-			id="cmp_FactoranlyssPrlllnlyssHrn"
-			label="Parallel analysis (Horn)"
-			type="standard"
-			file="plugins/ParallelanalysisHorn.xml"
-		>
-		</component>
-		<component 
-			id="cmp_FctrnlyssVrySmplStrctrMAP"
-			label="Very Simple Structure/Minimum Average Partial"
-			type="standard"
-			file="plugins/VerySimpleStructureMinimumAveragePartial.xml"
-		>
-		</component>
-		<component 
-			id="cmp_FactoranalysisFactornlyss"
-			label="Factor analysis"
-			type="standard"
-			file="plugins/Factoranalysis.xml"
-		>
-		</component>
-	</components>
-	<hierarchy>
-		<menu 
-			id="analysis"
-			label="Analysis"
-		>
-			<menu 
-				id="Factoranalysis"
-				label="Factor analysis"
-			>
-				<menu 
-					id="Numberoffactors"
-					label="Number of factors"
-				>
-					<entry component="cmp_FactoranalysisScreeplot" />
-				</menu>
-			</menu>
-		</menu>
-		<menu 
-			id="plots"
-			label="Plots"
-		>
-			<menu 
-				id="Factoranalysis"
-				label="Factor analysis"
-			>
-				<entry component="cmp_FactoranalysisCorreltnplt" />
-			</menu>
-		</menu>
-		<menu 
-			id="analysis"
-			label="Analysis"
-		>
-			<menu 
-				id="Factoranalysis"
-				label="Factor analysis"
-			>
-				<menu 
-					id="Numberoffactors"
-					label="Number of factors"
-				>
-					<entry component="cmp_FactoranlyssPrlllnlyssHrn" />
-				</menu>
-			</menu>
-		</menu>
-		<menu 
-			id="analysis"
-			label="Analysis"
-		>
-			<menu 
-				id="Factoranalysis"
-				label="Factor analysis"
-			>
-				<menu 
-					id="Numberoffactors"
-					label="Number of factors"
-				>
-					<entry component="cmp_FctrnlyssVrySmplStrctrMAP" />
-				</menu>
-			</menu>
-		</menu>
-		<menu 
-			id="analysis"
-			label="Analysis"
-		>
-			<menu 
-				id="Factoranalysis"
-				label="Factor analysis"
-			>
-				<entry component="cmp_FactoranalysisFactornlyss" />
-			</menu>
-		</menu>
-	</hierarchy>
+  <!-- 
+    this code was generated using the rkwarddev package.
+    perhaps don't make changes here, but in the rkwarddev script instead! 
+  -->
+  <dependencies rkward_min_version="0.6.0">
+    <package 
+      name="psych"
+      min="1.1.10"
+     />
+  </dependencies>
+  <about 
+    name="rk.FactorAnalysis"
+    shortinfo="RKWard GUI to conduct principal component and factor analysis"
+    longinfo="RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis."
+    version="0.01-14"
+    releasedate="2015-11-17"
+    url="https://rkward.kde.org"
+    license="GPL (&gt;= 3)"
+  >
+    <author 
+      given="Meik"
+      family="Michalke"
+      email="meik.michalke@hhu.de"
+      role="aut, cre"
+     />
+  </about>
+  <require 
+    map="rkward::menu"
+   />
+  <require 
+    map="rkward::embedded"
+   />
+  <components>
+    <component 
+      id="cmp_FactoranalysisScreeplot"
+      label="Scree plot"
+      type="standard"
+      file="plugins/Screeplot.xml"
+    >
+    </component>
+    <component 
+      id="cmp_FactoranalysisCorreltnplt"
+      label="Correlation plot"
+      type="standard"
+      file="plugins/Correlationplot.xml"
+    >
+    </component>
+    <component 
+      id="cmp_FactoranlyssPrlllnlyssHrn"
+      label="Parallel analysis (Horn)"
+      type="standard"
+      file="plugins/ParallelanalysisHorn.xml"
+    >
+    </component>
+    <component 
+      id="cmp_FctrnlyssVrySmplStrctrMAP"
+      label="Very Simple Structure/Minimum Average Partial"
+      type="standard"
+      file="plugins/VerySimpleStructureMinimumAveragePartial.xml"
+    >
+    </component>
+    <component 
+      id="cmp_FactoranalysisFactornlyss"
+      label="Factor analysis"
+      type="standard"
+      file="plugins/Factoranalysis.xml"
+    >
+    </component>
+  </components>
+  <hierarchy>
+    <menu 
+      id="analysis"
+      label="Analysis"
+    >
+      <menu 
+        id="Factoranalysis"
+        label="Factor analysis"
+      >
+        <menu 
+          id="Numberoffactors"
+          label="Number of factors"
+        >
+          <entry component="cmp_FactoranalysisScreeplot" />
+        </menu>
+      </menu>
+    </menu>
+    <menu 
+      id="plots"
+      label="Plots"
+    >
+      <menu 
+        id="Factoranalysis"
+        label="Factor analysis"
+      >
+        <entry component="cmp_FactoranalysisCorreltnplt" />
+      </menu>
+    </menu>
+    <menu 
+      id="analysis"
+      label="Analysis"
+    >
+      <menu 
+        id="Factoranalysis"
+        label="Factor analysis"
+      >
+        <menu 
+          id="Numberoffactors"
+          label="Number of factors"
+        >
+          <entry component="cmp_FactoranlyssPrlllnlyssHrn" />
+        </menu>
+      </menu>
+    </menu>
+    <menu 
+      id="analysis"
+      label="Analysis"
+    >
+      <menu 
+        id="Factoranalysis"
+        label="Factor analysis"
+      >
+        <menu 
+          id="Numberoffactors"
+          label="Number of factors"
+        >
+          <entry component="cmp_FctrnlyssVrySmplStrctrMAP" />
+        </menu>
+      </menu>
+    </menu>
+    <menu 
+      id="analysis"
+      label="Analysis"
+    >
+      <menu 
+        id="Factoranalysis"
+        label="Factor analysis"
+      >
+        <entry component="cmp_FactoranalysisFactornlyss" />
+      </menu>
+    </menu>
+  </hierarchy>
 </document>

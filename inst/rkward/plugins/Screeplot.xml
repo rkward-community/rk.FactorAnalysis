@@ -1,32 +1,32 @@
 <!DOCTYPE rkplugin >
 <document>
-	<!-- this code was generated using the rkwarddev package.
-			perhaps don't make changes here, but in the rkwarddev script instead! -->
-	<code file="Screeplot.js" />
-	<help file="Screeplot.rkh" />
-	<!-- <dependencies>
-			</dependencies> -->
-	<logic>
-		<!-- <convert id="!edit!" sources="!edit!" mode="equals" standard="!edit!" /> -->
-		<!-- <connect governor="!edit!" client="!edit!.enabled" /> -->
-	</logic>
-	<dialog label="Scree plot">
-		<row id="row_vSSDDSMMSD">
-			<varselector id="vrs_Slctdtfr" label="Select data.frame" />
-			<column id="clm_vDDSMMSDDF">
-				<varslot id="vrsl_Data" label="Data" source="vrs_Slctdtfr" required="true" />
-				<input label="Main title" id="inp_Maintitl" initial="Scree plot" />
-				<radio id="rad_Drwscrfr" label="Draw scree for">
-					<option label="Factors and components" value="both" />
-					<option label="Factors only" value="fact" />
-					<option label="Prinicipal components only" value="comp" />
-				</radio>
-				<frame label="Horizontal line" checkable="true" id="frm_Hrzntlln">
-					<spinbox label="Eigenvalue" id="spn_Eigenval" initial="1" min="0" />
-				</frame>
-				<stretch />
-				<preview />
-			</column>
-		</row>
-	</dialog>
+  <!-- this code was generated using the rkwarddev package.
+    perhaps don't make changes here, but in the rkwarddev script instead! -->
+  <code file="Screeplot.js" />
+  <help file="Screeplot.rkh" />
+  <!-- <dependencies>
+      </dependencies> -->
+  <logic>
+    <!-- <convert id="!edit!" sources="!edit!" mode="equals" standard="!edit!" /> -->
+    <!-- <connect governor="!edit!.state" client="!edit!.enabled" /> -->
+  </logic>
+  <dialog label="Scree plot">
+    <row id="row_vDSDSDDMTS">
+      <varselector id="screeData" label="Select data.frame" />
+      <column id="clm_vDSDDMTSTD">
+        <varslot id="screeDataSelected" label="Data" source="screeData" required="true" />
+        <input label="Main title" id="mainTitle" initial="Scree plot" />
+        <radio id="screeType" label="Draw scree for">
+          <option label="Factors and components" value="both" />
+          <option label="Factors only" value="fact" />
+          <option label="Prinicipal components only" value="comp" />
+        </radio>
+        <frame label="Horizontal line" checkable="true" id="horizLine">
+          <spinbox label="Eigenvalue" id="eigenvalue" initial="1" min="0" />
+        </frame>
+        <stretch />
+        <preview />
+      </column>
+    </row>
+  </dialog>
 </document>

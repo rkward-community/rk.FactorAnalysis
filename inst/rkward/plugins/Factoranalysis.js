@@ -5,180 +5,180 @@
 var isObrot;
 
 function preprocess(){
-	// add requirements etc. here
-	echo("require(psych)\n");
+  // add requirements etc. here
+  echo("require(psych)\n");
 }
 
 function calculate(){
-	// read in variables from dialog
-	
-	var vrslCrrltnmt = getString("vrsl_Crrltnmt");
-	var radFctrngmt = getString("rad_Fctrngmt");
-	var radCrrltnmt = getString("rad_Crrltnmt");
-	var spnNmbrffct = getString("spn_Nmbrffct");
-	var svbSvrsltst = getString("svb_Svrsltst");
-	var drpPCARotate = getString("drp_PCA_rotate");
-	var drpEFARotate = getString("drp_EFA_rotate");
-	var drpEFAFactmeth = getString("drp_EFA_factmeth");
-	var radIntlcmmn = getString("rad_Intlcmmn");
-	var radMtrxtfct = getString("rad_Mtrxtfct");
-	var radMtrxtscr = getString("rad_Mtrxtscr");
-	var radioMissingsPCA = getString("radio_missings_PCA");
-	var drpMthdtfnd = getString("drp_Mthdtfnd");
-	var radioMissingsEFA = getString("radio_missings_EFA");
-	var spnNmbrfbGF = getString("spn_NmbrfbGF");
-	var spnNmbrftrt = getString("spn_Nmbrftrt");
-	var spnUntlchng = getString("spn_Untlchng");
-	var spnMxmmnmbr = getString("spn_Mxmmnmbr");
-	var spnMrkrtmth = getString("spn_Mrkrtmth");
-	var spnShwdcmls = getString("spn_Shwdcmls");
-	var chcShwrsdls = getBoolean("chc_Shwrsdls.state");
-	var chcApplyKsr = getBoolean("chc_ApplyKsr.state");
-	var frmFndcmpnnChecked = getBoolean("frm_Fndcmpnn.checked");
-	var frmPrfrmbtsChecked = getBoolean("frm_Prfrmbts.checked");
+  // read in variables from dialog
+  
+  var dataSelected = getString("dataSelected");
+  var factorMethod = getString("factorMethod");
+  var corrMethod = getString("corrMethod");
+  var numFactors = getString("numFactors");
+  var saveResults = getString("saveResults");
+  var rotationMethodPCA = getString("rotationMethodPCA");
+  var rotationMethodEFA = getString("rotationMethodEFA");
+  var factorMethodEFA = getString("factorMethodEFA");
+  var initCommunalityEst = getString("initCommunalityEst");
+  var matrixToFactor = getString("matrixToFactor");
+  var matrixToScore = getString("matrixToScore");
+  var missingsPCA = getString("missingsPCA");
+  var factorScoreMethod = getString("factorScoreMethod");
+  var missingsEFA = getString("missingsEFA");
+  var numObs = getString("numObs");
+  var numIter = getString("numIter");
+  var minErr = getString("minErr");
+  var maxIter = getString("maxIter");
+  var cutoff = getString("cutoff");
+  var showDecimals = getString("showDecimals");
+  var showResiduals = getBoolean("showResiduals.state");
+  var kaiser = getBoolean("kaiser.state");
+  var componentScoresChecked = getBoolean("componentScores.checked");
+  var iterateChecked = getBoolean("iterate.checked");
 
-	// the R code to be evaluated
-	var obrot = new Array("promax", "oblimin", "simplimax", "bentlerQ", "geominQ", "biquartimin", "cluster");
+  // the R code to be evaluated
+  var obrot = new Array("promax", "oblimin", "simplimax", "bentlerQ", "geominQ", "biquartimin", "cluster");
 
-	if((obrot.indexOf(drpEFARotate) == -1 && radFctrngmt != "PCA") | (obrot.indexOf(drpPCARotate) == -1 && radFctrngmt == "PCA")) {
-		isObrot = false;
-	} else {
-		isObrot = true;
-	}
-	echo("\tFA.results <- ");
-	if(radFctrngmt == "PCA") {
-		echo("principal(");
-	} else if(chcApplyKsr) {
-		echo("kaiser(" + radCrrltnmt + "(");
-	} else {
-		echo(radCrrltnmt + "(");
-	}
-	if(vrslCrrltnmt) {
-		if(radFctrngmt == "EFA" && radCrrltnmt == "fa.poly") {
-			echo("x=" + vrslCrrltnmt);
-		} else {
-			echo("r=" + vrslCrrltnmt);
-		}
-	}
-	if(spnNmbrffct > 1) {
-		echo(",\n\t\tnfactors=" + spnNmbrffct);
-	}
-	if(radFctrngmt == "PCA" || radCrrltnmt == "fa") {
-		if(chcShwrsdls) {
-			echo(",\n\t\tresiduals=TRUE");
-		}
-	}
-	if(radFctrngmt == "PCA") {
-		echo(",\n\t\trotate=\"" + drpPCARotate + "\"");
-	} else if(chcApplyKsr) {
-		echo(",\n\t\trotate=\"none\"");
-	} else {
-		echo(",\n\t\trotate=\"" + drpEFARotate + "\"");
-	}
-	if(spnNmbrfbGF > 0) {
-		echo(",\n\t\tn.obs=" + spnNmbrfbGF);
-	}
-	if(radFctrngmt == "PCA") {
-		if(frmFndcmpnnChecked) {
-			echo(",\n\t\tscores=TRUE");
-		}
-		if(frmFndcmpnnChecked & radioMissingsPCA != "none") {
-			echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"" + radioMissingsPCA + "\"");
-		}
-	} else {
-		if(frmPrfrmbtsChecked) {
-			echo(",\n\t\tn.iter=" + spnNmbrftrt);
-		}
-		if(radCrrltnmt == "fa") {
-			echo(",\n\t\tscores=\"" + drpMthdtfnd + "\"");
-		}
-		if(radIntlcmmn == "false") {
-			echo(",\n\t\tSMC=FALSE");
-		}
-		if(radCrrltnmt == "fa" && radMtrxtfct == "true") {
-			echo(",\n\t\tcovar=TRUE");
-		}
-		if(radioMissingsEFA != "none") {
-			echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"" + radioMissingsEFA + "\"");
-		}
-		if(frmPrfrmbtsChecked & spnUntlchng != 0.001) {
-			echo(",\n\t\tmin.err=" + spnUntlchng);
-		}
-		if(frmPrfrmbtsChecked & spnMxmmnmbr != 50) {
-			echo(",\n\t\tmax.iter=" + spnMxmmnmbr);
-		}
-		echo(",\n\t\tfm=\"" + drpEFAFactmeth + "\"");
-		if(radMtrxtscr == "false") {
-			echo(",\n\t\toblique.scores=FALSE");
-		}
-	}
-	if(radFctrngmt == "EFA" && chcApplyKsr) {
-		echo("), rotate=\"" + drpEFARotate + "\"");
-	}
-	echo(")\n\n");
+  if((obrot.indexOf(rotationMethodEFA) == -1 && factorMethod != "PCA") | (obrot.indexOf(rotationMethodPCA) == -1 && factorMethod == "PCA")) {
+    isObrot = false;
+  } else {
+    isObrot = true;
+  }
+  echo("\tFA.results <- ");
+  if(factorMethod == "PCA") {
+    echo("principal(");
+  } else if(kaiser) {
+    echo("kaiser(" + corrMethod + "(");
+  } else {
+    echo(corrMethod + "(");
+  }
+  if(dataSelected) {
+    if(factorMethod == "EFA" && corrMethod == "fa.poly") {
+      echo("x=" + dataSelected);
+    } else {
+      echo("r=" + dataSelected);
+    }
+  } else {}
+  if(numFactors > 1) {
+    echo(",\n\t\tnfactors=" + numFactors);
+  } else {}
+  if(factorMethod == "PCA" || corrMethod == "fa") {
+    if(showResiduals) {
+      echo(",\n    residuals=TRUE");
+    } else {}
+  } else {}
+  if(factorMethod == "PCA") {
+    echo(",\n\t\trotate=\"" + rotationMethodPCA + "\"");
+  } else if(kaiser) {
+    echo(",\n\t\trotate=\"none\"");
+  } else {
+    echo(",\n\t\trotate=\"" + rotationMethodEFA + "\"");
+  }
+  if(numObs > 0) {
+    echo(",\n\t\tn.obs=" + numObs);
+  } else {}
+  if(factorMethod == "PCA") {
+    if(componentScoresChecked) {
+      echo(",\n\t\tscores=TRUE");
+    } else {}
+    if(componentScoresChecked & missingsPCA != "none") {
+      echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"" + missingsPCA + "\"");
+    } else {}
+  } else {
+    if(iterateChecked) {
+      echo(",\n\t\tn.iter=" + numIter);
+    } else {}
+    if(corrMethod == "fa") {
+      echo(",\n\t\tscores=\"" + factorScoreMethod + "\"");
+    } else {}
+    if(initCommunalityEst == "false") {
+      echo(",\n\t\tSMC=FALSE");
+    } else {}
+    if(corrMethod == "fa" && matrixToFactor == "true") {
+      echo(",\n\t\tcovar=TRUE");
+    } else {}
+    if(missingsEFA != "none") {
+      echo(",\n\t\tmissing=TRUE,\n\t\timpute=\"" + missingsEFA + "\"");
+    } else {}
+    if(iterateChecked & minErr != 0.001) {
+      echo(",\n\t\tmin.err=" + minErr);
+    } else {}
+    if(iterateChecked & maxIter != 50) {
+      echo(",\n\t\tmax.iter=" + maxIter);
+    } else {}
+    echo(",\n\t\tfm=\"" + factorMethodEFA + "\"");
+    if(matrixToScore == "false") {
+      echo(",\n\t\toblique.scores=FALSE");
+    } else {}
+  }
+  if(factorMethod == "EFA" && kaiser) {
+    echo("), rotate=\"" + rotationMethodEFA + "\"");
+  } else {}
+  echo(")\n\n");
 }
 
 function printout(){
-	// printout the results
+  // printout the results
 
 
-	var radFctrngmt = getValue("rad_Fctrngmt");
-	var spnNmbrffct = getValue("spn_Nmbrffct");
-	var drpPCARotate = getValue("drp_PCA_rotate");
-	var drpEFAFactmeth = getValue("drp_EFA_factmeth");
-	var drpEFARotate = getValue("drp_EFA_rotate");
-	var chcApplyKsr = getValue("chc_ApplyKsr");
-	var spnShwdcmls = getValue("spn_Shwdcmls");
-	var spnMrkrtmth = getValue("spn_Mrkrtmth");
-	echo("\tdigits <- function(obj) {\n\t\treturn(format(round(obj, digits=" + spnShwdcmls + "), nsmall=" + spnShwdcmls + "))\n\t}\n\t# Make matrix from loadings, for more flexible output\n\tFA.load.dim <- dim(FA.results$loadings)\n\tFA.load.names <- dimnames(FA.results$loadings)\n\t# Nicen component names\n\tFA.load.names[[2]] <- paste(");
-	if(radFctrngmt == "PCA") {
-		echo("\"Component\"");
-	} else {
-		echo("\"Factor\"");
-	}
-	echo(", 1:length(FA.load.names[[2]]))\n\tFA.load <- FA.results$loadings[!is.character(FA.results$loadings)]\n\tFA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)\n\t# For printout, highlight loadings\n\tidx.load <- FA.load >= " + spnMrkrtmth + "\n\tFA.load.print <- digits(FA.load)\n\tFA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")\n\tFA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)\n\t# Append communality and uniqueness\n\tFA.load.print <- cbind(FA.load.print,\n\t\t\"communality\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),\n\t\t\"uniqueness\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n\t# Append sum of squared loadings\n");
-	if(isObrot) {
-		echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n");
-	} else {
-		echo("\tFA.s2load <- colSums(FA.results$loadings^2)\n");
-	}
-	echo("\t# Variance explained\n\tFA.varExp <- 100 * FA.s2load / FA.load.dim[1]\n\tFA.load.print <- rbind(FA.load.print,\n\t\t\"Sum of squared loadings\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.s2load), \"</span>\", sep=\"\"),\n\t\tdigits(sum(FA.s2load)), \"\"),\n\t\t\"Variance explained (%)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.varExp), \"</span>\", sep=\"\"), \"\", \"\"),\n\t\t\"Variance explained (cum %)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))\n\t# Finally, make it a data.frame\n\tFA.load.print <- data.frame(FA.load.print, stringsAsFactors=FALSE)\n");
-	if(isObrot) {
-		echo("\t# Prepare correlation matrix for printout\n\t\tcomp.corr <- digits(FA.results$Phi)\n\t\tdimnames(comp.corr) <- list(FA.load.names[[2]],FA.load.names[[2]])\n");
-	}
-	echo("\t# Prepare score*factors matrix for printout\n\tscfc.corr <- data.frame(rbind(\n\t\t\"Correlation of scores with factors\"=digits(sqrt(FA.results$R2)),\n\t\t\"Multiple R square of scores with factors\"=digits(FA.results$R2),\n\t\t\"Minimum correlation of possible factor scores\"=digits((2*FA.results$R2)-1)), stringsAsFactors=FALSE)\n\tcolnames(scfc.corr) <- FA.load.names[[2]]\n\n\t# Ok, here the actual output starts\n");
-	if(radFctrngmt == "PCA") {
-		echo("rk.header(\"Principal Component Analysis\"");
-	} else {
-		echo("rk.header(\"Factor Analysis\"");
-	}
-	echo(",\n\tparameters=list(");
-	if(radFctrngmt == "PCA") {
-		echo("\t\t\"Number of components\", " + spnNmbrffct + ",\n" + "\t\t\"Rotation\", \"" + drpPCARotate + "\"");
-	} else {
-		echo("\t\t\"Number of factors\", " + spnNmbrffct + ",\n" + "\t\t\"Factoring method\", \"" + drpEFAFactmeth + "\",\n" + "\t\t\"Rotation\", \"" + drpEFARotate + "\"");
-		if(chcApplyKsr) {
-			echo(",\n\t\t\"Normalization\", \"Kaiser\"");
-		}
-	}
-	echo("))\n");
-	echo("rk.results(list(\n\t\"Degrees of freedom\"=FA.results$dof,\n\t\"Fit\"=digits(FA.results$fit),\n\t\"Fit (off diag)\"=digits(FA.results$fit.off)\n\t))\n");
-	echo("rk.header(\"Loadings\", level=4)\n");
-	echo("rk.results(FA.load.print)\n");
-	if(isObrot) {
-		echo("rk.header(\"Factor correlations\", level=4)\nrk.results(data.frame(comp.corr, stringsAsFactors=FALSE))\n");
-	}
-	echo("rk.header(\"Measures of factor score adequacy\", level=4)\n");
-	echo("rk.results(scfc.corr)\n");
-	//// save result object
-	// read in saveobject variables
-	var svbSvrsltst = getValue("svb_Svrsltst");
-	var svbSvrsltstActive = getValue("svb_Svrsltst.active");
-	var svbSvrsltstParent = getValue("svb_Svrsltst.parent");
-	// assign object to chosen environment
-	if(svbSvrsltstActive) {
-		echo(".GlobalEnv$" + svbSvrsltst + " <- FA.results\n");
-	}
+  var factorMethod = getValue("factorMethod");
+  var numFactors = getValue("numFactors");
+  var rotationMethodPCA = getValue("rotationMethodPCA");
+  var factorMethodEFA = getValue("factorMethodEFA");
+  var rotationMethodEFA = getValue("rotationMethodEFA");
+  var kaiser = getValue("kaiser");
+  var showDecimals = getValue("showDecimals");
+  var cutoff = getValue("cutoff");
+  echo("\tdigits <- function(obj) {\n    return(format(round(obj, digits=" + showDecimals + "), nsmall=" + showDecimals + "))\n  }\n  # Make matrix from loadings, for more flexible output\n  FA.load.dim <- dim(FA.results$loadings)\n  FA.load.names <- dimnames(FA.results$loadings)\n  # Nicen component names\n  FA.load.names[[2]] <- paste(");
+  if(factorMethod == "PCA") {
+    echo("\"Component\"");
+  } else {
+    echo("\"Factor\"");
+  }
+  echo(", 1:length(FA.load.names[[2]]))\n  FA.load <- FA.results$loadings[!is.character(FA.results$loadings)]\n  FA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)\n  # For printout, highlight loadings\n  idx.load <- FA.load >= " + cutoff + "\n  FA.load.print <- digits(FA.load)\n  FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")\n  FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)\n  # Append communality and uniqueness\n  FA.load.print <- cbind(FA.load.print,\n    \"communality\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),\n    \"uniqueness\"=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n  # Append sum of squared loadings\n");
+  if(isObrot) {
+    echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n");
+  } else {
+    echo("\tFA.s2load <- colSums(FA.results$loadings^2)\n");
+  }
+  echo("\t# Variance explained\n  FA.varExp <- 100 * FA.s2load / FA.load.dim[1]\n  FA.load.print <- rbind(FA.load.print,\n    \"Sum of squared loadings\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.s2load), \"</span>\", sep=\"\"),\n    digits(sum(FA.s2load)), \"\"),\n    \"Variance explained (%)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.varExp), \"</span>\", sep=\"\"), \"\", \"\"),\n    \"Variance explained (cum %)\"=c(paste(\"<span style=\\\"color:grey;\\\">\", digits(cumsum(FA.varExp)), \"</span>\", sep=\"\"), \"\", \"\"))\n  # Finally, make it a data.frame\n  FA.load.print <- data.frame(FA.load.print, stringsAsFactors=FALSE)\n");
+  if(isObrot) {
+    echo("\t# Prepare correlation matrix for printout\n    comp.corr <- digits(FA.results$Phi)\n    dimnames(comp.corr) <- list(FA.load.names[[2]],FA.load.names[[2]])\n");
+  } else {}
+  echo("\t# Prepare score*factors matrix for printout\n  scfc.corr <- data.frame(rbind(\n    \"Correlation of scores with factors\"=digits(sqrt(FA.results$R2)),\n    \"Multiple R square of scores with factors\"=digits(FA.results$R2),\n    \"Minimum correlation of possible factor scores\"=digits((2*FA.results$R2)-1)), stringsAsFactors=FALSE)\n  colnames(scfc.corr) <- FA.load.names[[2]]\n\n  # Ok, here the actual output starts\n");
+  if(factorMethod == "PCA") {
+    echo("rk.header(\"Principal Component Analysis\"");
+  } else {
+    echo("rk.header(\"Factor Analysis\"");
+  }
+  echo(",\n\tparameters=list(");
+  if(factorMethod == "PCA") {
+    echo("\t\t\"Number of components\", " + numFactors + ",\n" + "\t\t\"Rotation\", \"" + rotationMethodPCA + "\"");
+  } else {
+    echo("\t\t\"Number of factors\", " + numFactors + ",\n" + "\t\t\"Factoring method\", \"" + factorMethodEFA + "\",\n" + "\t\t\"Rotation\", \"" + rotationMethodEFA + "\"");
+    if(kaiser) {
+      echo(",\n\t\t\"Normalization\", \"Kaiser\"");
+    } else {}
+  }
+  echo("))\n");
+  echo("rk.results(list(\n  \"Degrees of freedom\"=FA.results$dof,\n  \"Fit\"=digits(FA.results$fit),\n  \"Fit (off diag)\"=digits(FA.results$fit.off)\n  ))\n");
+  echo("rk.header(\"Loadings\", level=4)\n");
+  echo("rk.results(FA.load.print)\n");
+  if(isObrot) {
+    echo("rk.header(\"Factor correlations\", level=4)\nrk.results(data.frame(comp.corr, stringsAsFactors=FALSE))\n");
+  } else {}
+  echo("rk.header(\"Measures of factor score adequacy\", level=4)\n");
+  echo("rk.results(scfc.corr)\n");
+  //// save result object
+  // read in saveobject variables
+  var saveResults = getValue("saveResults");
+  var saveResultsActive = getValue("saveResults.active");
+  var saveResultsParent = getValue("saveResults.parent");
+  // assign object to chosen environment
+  if(saveResultsActive) {
+    echo(".GlobalEnv$" + saveResults + " <- FA.results\n");
+  } else {}
 
 }
 
