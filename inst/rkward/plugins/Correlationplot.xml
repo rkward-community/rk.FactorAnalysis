@@ -14,7 +14,7 @@
     <row id="row_vDSDSDDCRB">
       <varselector id="crpltData" label="Select data" />
       <column id="clm_vDSDDCRBGR">
-        <varslot id="crpltDataSelected" label="Data (correaltaion/factor matrix)" source="crpltData" required="true" />
+        <varslot id="crpltDataSelected" label="Data (correlation/factor matrix)" source="crpltData" required="true" />
         <radio id="colors" label="Colors">
           <option label="Red to Blue" value="true" checked="true" />
           <option label="Greyscale" value="false" />

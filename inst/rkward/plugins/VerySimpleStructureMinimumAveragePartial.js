@@ -25,7 +25,7 @@ function calculate(){
   if(vssDataSelected) {
     echo("\n\t\t\t" + vssDataSelected);  
   } else {}
-  if(vssNumObs != 0) {
+  if(vssFactorMethod == "ml" && vssNumObs != 0) {
     echo(",\n\t\t\tn.obs=" + vssNumObs);  
   } else {}
   if(vssFactorMethod != "minres") {
@@ -89,7 +89,7 @@ function doPrintout(full){
   if(connectDiffCplx) {
     echo(",\n\t\t\tline=TRUE");  
   } else {}
-  echo(")");
+  echo(")\n");
 
   
 
@@ -98,7 +98,12 @@ function doPrintout(full){
     echo("rk.graph.off()\n");
   } else {}  
   } else {}
-  echo("rk.header(\"Very Simple Structure\", level=4)\n" + "rk.print(paste(\"VSS complexity 1 achieves a maximimum of \", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), \" with \", min.VSS1, \" factors.\", sep=\"\"))\n" + "rk.print(paste(\"VSS complexity 2 achieves a maximimum of \", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), \" with \", min.VSS2, \" factors.\", sep=\"\"))\n" + "rk.header(\"Minimum Average Partial\", level=4)\n" + "rk.print(paste(\"The Velicer MAP criterion achieves a minimum of \", round(VSS.data[[\"map\"]][min.MAP], digits=3), \" with \", min.MAP, \" factors.\", sep=\"\"))\n" + "rk.header(\"Statistics\", level=4)\n" + "rk.results(vss.stat.results)\n\n");
+  new Header(i18n("Very Simple Structure"), 4).print();
+  echo("rk.print(paste(" + i18n("VSS complexity 1 achieves a maximimum of ") + ", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), " + i18n(" with ") + ", min.VSS1, " + i18n(" factors.") + ", sep=\"\"))\n" + "rk.print(paste(" + i18n("VSS complexity 2 achieves a maximimum of ") + ", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), " + i18n(" with ") + ", min.VSS2, " + i18n(" factors.") + ", sep=\"\"))\n\n");
+  new Header(i18n("Minimum Average Partial"), 4).print();
+  echo("rk.print(paste(" + i18n("The Velicer MAP criterion achieves a minimum of ") + ", round(VSS.data[[\"map\"]][min.MAP], digits=3), " + i18n(" with ") + ", min.MAP, " + i18n(" factors.") + ", sep=\"\"))\n\n");
+  new Header(i18n("Statistics"), 4).print();
+  echo("rk.results(vss.stat.results)\n\n");
 
   // left over from the printout function
 

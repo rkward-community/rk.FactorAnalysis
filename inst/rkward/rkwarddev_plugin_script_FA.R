@@ -8,12 +8,13 @@ rkwarddev.required("0.07-4")
 
 local({
 # set the output directory to overwrite the actual plugin
-output.dir <- tempdir()
+output.dir <- "/home/m/daten/R/rkward_plugins/git/"#tempdir()
 overwrite <- TRUE
 # if you set guess.getters to TRUE, the resulting code will need RKWard >= 0.6.0
 guess.getter <- TRUE
 rk.set.indent(by="  ")
 rk.set.empty.e(TRUE)
+update.translations <- TRUE
 
 about.info <- rk.XML.about(
   name="rk.FactorAnalysis",
@@ -725,7 +726,7 @@ vss.js.calc <- rk.paste.JS(
     if(vssDataSelected){
       echo("\n\t\t\t", vssDataSelected)
     } else {},
-    if(vssNumObs != 0){
+    if(vssFactorMethod == "ml" && vssNumObs != 0){
       echo(",\n\t\t\tn.obs=", vssNumObs) # NULL
     } else {},
     if(vssFactorMethod != "minres"){
@@ -760,17 +761,21 @@ vss.js.print <- rk.paste.JS(
             echo(",\n\t\t\tline=TRUE")
           } else {}
         ),
-        echo(")")
+        echo(")\n")
       )
     } else {}
   ),
-  echo("rk.header(\"Very Simple Structure\", level=4)\n",
-  "rk.print(paste(\"VSS complexity 1 achieves a maximimum of \", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), \" with \", min.VSS1, \" factors.\", sep=\"\"))\n",
-  "rk.print(paste(\"VSS complexity 2 achieves a maximimum of \", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), \" with \", min.VSS2, \" factors.\", sep=\"\"))\n",
-  "rk.header(\"Minimum Average Partial\", level=4)\n",
-  "rk.print(paste(\"The Velicer MAP criterion achieves a minimum of \", round(VSS.data[[\"map\"]][min.MAP], digits=3), \" with \", min.MAP, \" factors.\", sep=\"\"))\n",
-  "rk.header(\"Statistics\", level=4)\n",
-  "rk.results(vss.stat.results)\n\n")
+  rk.JS.header("Very Simple Structure", level=4),
+  echo(
+    "rk.print(paste(", i18n("VSS complexity 1 achieves a maximimum of "), ", round(VSS.data[[\"cfit.1\"]][min.VSS1], digits=3), ", i18n(" with "), ", min.VSS1, ", i18n(" factors."), ", sep=\"\"))\n",
+    "rk.print(paste(", i18n("VSS complexity 2 achieves a maximimum of "), ", round(VSS.data[[\"cfit.2\"]][min.VSS2], digits=3), ", i18n(" with "), ", min.VSS2, ", i18n(" factors."), ", sep=\"\"))\n\n"
+  ),
+  rk.JS.header("Minimum Average Partial", level=4),
+  echo(
+    "rk.print(paste(", i18n("The Velicer MAP criterion achieves a minimum of "), ", round(VSS.data[[\"map\"]][min.MAP], digits=3), ", i18n(" with "), ", min.MAP, ", i18n(" factors."), ", sep=\"\"))\n\n"
+  ),
+  rk.JS.header("Statistics", level=4),
+  echo("rk.results(vss.stat.results)\n\n")
 )
 
 ## make a whole component
@@ -791,7 +796,7 @@ vss.component <- rk.plugin.component("Very Simple Structure/Minimum Average Part
 ## correlation plot
 ############
 crpltData <- rk.XML.varselector(label="Select data", id.name="crpltData")
-crpltDataSelected <- rk.XML.varslot(label="Data (correaltaion/factor matrix)",
+crpltDataSelected <- rk.XML.varslot(label="Data (correlation/factor matrix)",
   source=crpltData,
 #  classes=c("data.frame", "matrix"),
   required=TRUE,
@@ -868,7 +873,7 @@ crplt.js.print <- rk.paste.JS(
       if(crpltMainTitle != "Correlation plot"){
         echo(",\n\t\t\tmain=\"", crpltMainTitle, "\"")
       } else {},
-      if(spinLower != -1 || spinUpper != 1){
+      if(spinLower != id(-1) || spinUpper != 1){
         echo(",\n\t\t\tzlim=c(",spinLower,",",spinUpper, ")")
       } else {},
       if(js.chk.lables){
@@ -927,4 +932,8 @@ rk.FactorAnalysis.dir <<- rk.plugin.skeleton(
 #  show=TRUE,
   load=TRUE,
   hints=FALSE)
+
+  if(isTRUE(update.translations)){
+    rk.updatePluginMessages(file.path(output.dir,"rk.FactorAnalysis","inst","rkward","rk.FactorAnalysis.pluginmap"))
+  } else {}
 })
