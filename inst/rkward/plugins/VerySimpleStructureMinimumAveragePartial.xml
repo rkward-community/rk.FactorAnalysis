@@ -1,11 +1,11 @@
 <!DOCTYPE rkplugin >
 <document>
-  <!--   this code was generated using the rkwarddev package.
-        perhaps don't make changes here, but in the rkwarddev script instead! -->
+  <!-- this code was generated using the rkwarddev package.
+    perhaps don't make changes here, but in the rkwarddev script instead! -->
   <code file="VerySimpleStructureMinimumAveragePartial.js" />
   <help file="VerySimpleStructureMinimumAveragePartial.rkh" />
-  <!--   <dependencies>
-        </dependencies> -->
+  <!-- <dependencies>
+      </dependencies> -->
   <logic>
     <convert id="lgc_vssFctrM" sources="vssFactorMethod.string" mode="equals" standard="ml" />
     <connect governor="lgc_vssFctrM" client="vssNumObs.enabled" />

@@ -2,7 +2,7 @@ Package: rk.FactorAnalysis
 Type: Package
 Title: RKWard GUI to conduct principal component and factor analysis
 Version: 0.01-14
-Date: 2015-11-17
+Date: 2015-12-18
 Author: Meik Michalke
 Maintainer: Meik Michalke <meik.michalke@hhu.de>
 Depends: rkward (>= 0.6.0)
@@ -13,3 +13,4 @@ License: GPL (>= 3)
 LazyLoad: yes
 URL: https://rkward.kde.org
 Authors@R: person(given="Meik", family="Michalke", email="meik.michalke@hhu.de", role=c("aut", "cre"))
+RoxygenNote: 5.0.1

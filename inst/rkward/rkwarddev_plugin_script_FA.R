@@ -4,11 +4,11 @@
 # *EXCEPT* for the last call, see below.
 
 require(rkwarddev)
-rkwarddev.required("0.07-4")
+rkwarddev.required("0.08-1")
 
 local({
 # set the output directory to overwrite the actual plugin
-output.dir <- "/home/m/daten/R/rkward_plugins/git/"#tempdir()
+output.dir <- tempdir()
 overwrite <- TRUE
 # if you set guess.getters to TRUE, the resulting code will need RKWard >= 0.6.0
 guess.getter <- TRUE
