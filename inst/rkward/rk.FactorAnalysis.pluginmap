@@ -7,8 +7,8 @@
   priority="medium"
 >
   <!-- 
-      this code was generated using the rkwarddev package.
-        perhaps don't make changes here, but in the rkwarddev script instead! 
+    this code was generated using the rkwarddev package.
+    perhaps don't make changes here, but in the rkwarddev script instead! 
   -->
   <dependencies rkward_min_version="0.6.0">
     <package 
@@ -21,7 +21,7 @@
     shortinfo="RKWard GUI to conduct principal component and factor analysis"
     longinfo="RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis."
     version="0.01-14"
-    releasedate="2015-11-17"
+    releasedate="2015-12-18"
     url="https://rkward.kde.org"
     license="GPL (&gt;= 3)"
   >

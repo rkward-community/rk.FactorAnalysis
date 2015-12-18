@@ -3,8 +3,8 @@
 #' \tabular{ll}{
 #' Package: \tab rk.FactorAnalysis\cr
 #' Type: \tab Package\cr
-#' Version: \tab 0.01-13\cr
-#' Date: \tab 2015-03-14\cr
+#' Version: \tab 0.01-14\cr
+#' Date: \tab 2015-12-18\cr
 #' Depends: \tab rkward (>= 0.6.0)\cr
 #' Enhances: \tab rkward\cr
 #' License: \tab GPL (>= 3)\cr
