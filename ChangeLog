@@ -1,6 +1,10 @@
 ChangeLog for package rk.FactorAnalysis
 
-changes in version 0.01-14 (2015-06-29)
+changes in version 0.01-15 (2015-12-18)
+unreleased:
+  - this release is under development
+
+changes in version 0.01-14 (2015-12-18)
 added:
   - plugin is now translatable (see inst/rkward/po/)
   - german translation
