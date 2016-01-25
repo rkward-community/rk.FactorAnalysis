@@ -3,27 +3,21 @@
 
 
 
-function preprocess(){
+function preview(){
+  preprocess(true);
+  calculate(true);
+  printout(true);
+}
+
+function preprocess(is_preview){
   // add requirements etc. here
   echo("require(psych)\n");
 }
 
-function calculate(){
+function calculate(is_preview){
 }
 
-function printout(){
-  // all the real work is moved to a custom defined function doPrintout() below
-  // true in this case means: We want all the headers that should be printed in the output:
-  doPrintout(true);
-}
-
-function preview(){
-  preprocess();
-  calculate();
-  doPrintout(false);
-}
-
-function doPrintout(full){
+function printout(is_preview){
   // read in variables from dialog
   var screeDataSelected = getString("screeDataSelected");
   var mainTitle = getString("mainTitle");
@@ -31,16 +25,16 @@ function doPrintout(full){
   var eigenvalue = getString("eigenvalue");
   var horizLineChecked = getBoolean("horizLine.checked");
 
-  // create the plot
-  if(full) {
-    new Header(i18n("Scree plot results")).print();
+  // printout the results
+  if(!is_preview) {
+    new Header(i18n("Scree plot results")).print();  
   } else {}
 
   var horizLineChecked = getValue("horizLine.checked");
   
 
-  if(full) {
-    echo("rk.graph.on()\n");
+  if(!is_preview) {
+    echo("rk.graph.on()\n");  
   } else {}
   echo("  try({\n");
 
@@ -72,7 +66,9 @@ function doPrintout(full){
   
 
   echo("\n  })\n");
-  if(full) {
-    echo("rk.graph.off()\n");
+  if(!is_preview) {
+    echo("rk.graph.off()\n");  
   } else {}
+
 }
+

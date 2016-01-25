@@ -3,12 +3,18 @@
 
 
 
-function preprocess(){
+function preview(){
+  preprocess(true);
+  calculate(true);
+  printout(true);
+}
+
+function preprocess(is_preview){
   // add requirements etc. here
   echo("require(psych)\n");
 }
 
-function calculate(){
+function calculate(is_preview){
   // read in variables from dialog
   var vssDataSelected = getString("vssDataSelected");
   var vssFactorMethod = getString("vssFactorMethod");
@@ -41,19 +47,7 @@ function calculate(){
   echo("\n\t\tvss.stat.vars <- c(\"dof\",\"chisq\",\"prob\",\"sqresid\",\"fit\",\"cfit.1\",\"cfit.2\")\n" + "\n\t\tvss.stat.results <- as.data.frame(cbind(Factors=1:length(VSS.data[[\"map\"]]), MAP=VSS.data[[\"map\"]], VSS.data[[\"vss.stats\"]][,vss.stat.vars]))\n" + "\t\tcolnames(vss.stat.results)[3:9] <- paste(\"VSS\", vss.stat.vars, sep=\".\")\n\n" + "\t\tmin.MAP <- which.min(VSS.data[[\"map\"]])\n" + "\t\tmin.VSS1 <- which.min(VSS.data[[\"cfit.1\"]])\n" + "\t\tmin.VSS2 <- which.min(VSS.data[[\"cfit.2\"]])\n\n");
 }
 
-function printout(){
-  // all the real work is moved to a custom defined function doPrintout() below
-  // true in this case means: We want all the headers that should be printed in the output:
-  doPrintout(true);
-}
-
-function preview(){
-  preprocess();
-  calculate();
-  doPrintout(false);
-}
-
-function doPrintout(full){
+function printout(is_preview){
   // read in variables from dialog
   var vssDataSelected = getString("vssDataSelected");
   var vssFactorMethod = getString("vssFactorMethod");
@@ -65,17 +59,17 @@ function doPrintout(full){
   var connectDiffCplx = getBoolean("connectDiffCplx.state");
   var vssPlotResultsChecked = getBoolean("vssPlotResults.checked");
 
-  // create the plot
-  if(full) {
-    new Header(i18n("Very Simple Structure/Minimum Average Partial results")).print();
+  // printout the results
+  if(!is_preview) {
+    new Header(i18n("Very Simple Structure/Minimum Average Partial results")).print();  
   } else {}
 
   var vssPlotResultsChecked = getValue("vssPlotResults.checked");
   if(vssPlotResultsChecked) {
     
 
-  if(full) {
-    echo("rk.graph.on()\n");
+  if(!is_preview) {
+    echo("rk.graph.on()\n");  
   } else {}
   echo("  try({\n");
 
@@ -94,8 +88,8 @@ function doPrintout(full){
   
 
   echo("\n  })\n");
-  if(full) {
-    echo("rk.graph.off()\n");
+  if(!is_preview) {
+    echo("rk.graph.off()\n");  
   } else {}  
   } else {}
   new Header(i18n("Very Simple Structure"), 4).print();
@@ -104,9 +98,6 @@ function doPrintout(full){
   echo("rk.print(paste(" + i18n("The Velicer MAP criterion achieves a minimum of ") + ", round(VSS.data[[\"map\"]][min.MAP], digits=3), " + i18n(" with ") + ", min.MAP, " + i18n(" factors.") + ", sep=\"\"))\n\n");
   new Header(i18n("Statistics"), 4).print();
   echo("rk.results(vss.stat.results)\n\n");
-
-  // left over from the printout function
-
   //// save result object
   // read in saveobject variables
   var vssSaveResults = getValue("vssSaveResults");
@@ -117,5 +108,5 @@ function doPrintout(full){
     echo(".GlobalEnv$" + vssSaveResults + " <- VSS.data\n");
   } else {}
 
-
 }
+

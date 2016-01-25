@@ -4,12 +4,14 @@
 // define variables globally
 var isObrot;
 
-function preprocess(){
+
+
+function preprocess(is_preview){
   // add requirements etc. here
   echo("require(psych)\n");
 }
 
-function calculate(){
+function calculate(is_preview){
   // read in variables from dialog
   
   var dataSelected = getString("dataSelected");
@@ -118,7 +120,7 @@ function calculate(){
   echo(")\n\n");
 }
 
-function printout(){
+function printout(is_preview){
   // printout the results
 
 

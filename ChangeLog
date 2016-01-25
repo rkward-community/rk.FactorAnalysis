@@ -3,6 +3,9 @@ ChangeLog for package rk.FactorAnalysis
 changes in version 0.01-15 (2015-12-18)
 unreleased:
   - this release is under development
+changed:
+  - adjusted the generator script to implement the new preview approach,
+    using "printout" and dropping "doPrintout"
 
 changes in version 0.01-14 (2015-12-18)
 added:

@@ -4,7 +4,7 @@
 # *EXCEPT* for the last call, see below.
 
 require(rkwarddev)
-rkwarddev.required("0.08-1")
+rkwarddev.required("0.08-2")
 
 local({
 # set the output directory to overwrite the actual plugin
@@ -530,13 +530,16 @@ scree.js.print <- rk.paste.JS(
 ## make a whole component
 scree.component <- rk.plugin.component("Scree plot",
   xml=list(
-    dialog=scree.full.dialog),
+    dialog=scree.full.dialog
+  ),
   js=list(
     require="psych",
-    doPrintout=scree.js.print),
+    printout=scree.js.print
+  ),
   guess.getter=guess.getter,
   hierarchy=list("analysis", "Factor analysis","Number of factors"),
-  create=c("xml", "js"))
+  create=c("xml", "js")
+)
 
 
 ############
@@ -641,7 +644,7 @@ prll.component <- rk.plugin.component("Parallel analysis (Horn)",
     dialog=prll.full.dialog),
   js=list(
     require="psych",
-    doPrintout=prll.js.print),
+    printout=prll.js.print),
   guess.getter=guess.getter,
   hierarchy=list("analysis", "Factor analysis","Number of factors"),
   create=c("xml", "js"))
@@ -786,7 +789,7 @@ vss.component <- rk.plugin.component("Very Simple Structure/Minimum Average Part
   js=list(
     require="psych",
     calculate=vss.js.calc,
-    doPrintout=vss.js.print),
+    printout=vss.js.print),
   guess.getter=guess.getter,
   hierarchy=list("analysis", "Factor analysis","Number of factors"),
   create=c("xml", "js"))
@@ -894,7 +897,7 @@ crplt.component <- rk.plugin.component("Correlation plot",
     dialog=crplt.full.dialog),
   js=list(results.header="Correlation plot",
     require="psych",
-     doPrintout=crplt.js.print),
+     printout=crplt.js.print),
   guess.getter=guess.getter,
   hierarchy=list("plots", "Factor analysis"),
   create=c("xml", "js"))
