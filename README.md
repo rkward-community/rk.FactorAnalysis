@@ -1,5 +1,7 @@
 # rk.FactorAnalysis
 
+[![Flattr this git repo](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=tfry&url=https://github.com/rkward-community/rk.FactorAnalysis&title=rk.FactorAnalysis&language=en_GB&tags=github&category=software)
+
 This R package provides a GUI to conduct principal component and factor analysis.
 
 ![Parallel analysis (Horn)](/inst/screenshots/parallel_analysis.png?raw=true "rk.FactorAnalysis: Parallel analysis")
