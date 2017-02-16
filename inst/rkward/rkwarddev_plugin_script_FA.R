@@ -365,13 +365,13 @@ js.print <- rk.paste.JS(
   FA.load <- FA.results$loadings[!is.character(FA.results$loadings)]
   FA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)\n"),
   R.comment("For printout, highlight loadings"),
-  echo("\tidx.load <- FA.load >= ", cutoff, "
+  echo("\tidx.load <- abs(FA.load) >= ", cutoff, "
   FA.load.print <- digits(FA.load)
   FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")
   FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)\n"),
   R.comment("Append communality and uniqueness"),
   echo("\tFA.load.print <- cbind(FA.load.print,\n\t\t",
-    i18n("communality"), "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\")\n\t\t",
+    i18n("communality"), "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),\n\t\t",
     i18n("uniqueness"), "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n"),
   R.comment("Append sum of squared loadings"),
   js(
@@ -415,17 +415,17 @@ js.print <- rk.paste.JS(
   js(
     if(factorMethod == "PCA"){
       echo(
-        "\t\t", i18n("Number of components"), ", ", numFactors, ",\n",
-        "\t\t", i18n("Rotation"), ", \"", rotationMethodPCA, "\""
+        "\t\t", i18n("Number of components"), "=", numFactors, ",\n",
+        "\t\t", i18n("Rotation"), "=\"", rotationMethodPCA, "\""
       )
     } else {
       echo(
-        "\t\t", i18n("Number of factors"), ", ", numFactors, ",\n",
-        "\t\t", i18n("Factoring method"), ", \"", factorMethodEFA,"\",\n",
-        "\t\t", i18n("Rotation"), ", \"", rotationMethodEFA, "\""
+        "\t\t", i18n("Number of factors"), "=", numFactors, ",\n",
+        "\t\t", i18n("Factoring method"), "=\"", factorMethodEFA,"\",\n",
+        "\t\t", i18n("Rotation"), "=\"", rotationMethodEFA, "\""
       )
       if(kaiser){
-        echo(",\n\t\t", i18n("Normalization"), ", \"Kaiser\"")
+        echo(",\n\t\t", i18n("Normalization"), "=\"Kaiser\"")
       } else {}
     }
   ),

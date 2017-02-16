@@ -1,9 +1,13 @@
 ChangeLog for package rk.FactorAnalysis
 
-changes in version 0.01-15 (2015-12-18)
+changes in version 0.01-15 (2017-02-17)
 unreleased:
   - this release is under development
+fixed:
+  - fixed a missing comma in the printout code
+  - fixed factor loadings highlighting (now also respects negative loadings)
 changed:
+  - updated rk.header() code to newer style
   - adjusted the generator script to implement the new preview approach,
     using "printout" and dropping "doPrintout"
 
