@@ -33,7 +33,7 @@
         <frame label="Plot results" checkable="true" id="vssPlotResults">
           <input label="Main title" id="vssMainTitle" initial="Very Simple Structure" />
           <checkbox id="connectDiffCplx" label="Connect different complexities" value="true" />
-          <preview />
+          <preview label="Preview" id="prv_Preview" />
         </frame>
         <saveobject label="Save data to workspace" checkable="true" initial="VSS.data" id="vssSaveResults" />
       </column>

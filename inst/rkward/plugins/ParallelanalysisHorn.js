@@ -1,8 +1,6 @@
 // this code was generated using the rkwarddev package.
 // perhaps don't make changes here, but in the rkwarddev script instead!
 
-
-
 function preview(){
   preprocess(true);
   calculate(true);
@@ -11,7 +9,11 @@ function preview(){
 
 function preprocess(is_preview){
   // add requirements etc. here
-  echo("require(psych)\n");
+  if(is_preview) {
+    echo("if(!base::require(psych)){stop(" + i18n("Preview not available, because package psych is not installed or cannot be loaded.") + ")}\n");
+  } else {
+    echo("require(psych)\n");
+  }
 }
 
 function calculate(is_preview){
@@ -25,7 +27,6 @@ function printout(is_preview){
   var hornFactorMethod = getString("hornFactorMethod");
   var hornNumObs = getString("hornNumObs");
   var hornNumIter = getString("hornNumIter");
-  var hornSaveResults = getString("hornSaveResults");
   var SMCs = getBoolean("SMCs.state");
   var errorBars = getBoolean("errorBars.state");
   var showLegend = getBoolean("showLegend.state");
@@ -33,9 +34,7 @@ function printout(is_preview){
   // printout the results
   if(!is_preview) {
     new Header(i18n("Parallel analysis (Horn) results")).print();  
-  } else {}
-
-  
+  } else {}  
 
   if(!is_preview) {
     echo("rk.graph.on()\n");  
@@ -81,14 +80,16 @@ function printout(is_preview){
   if(!is_preview) {
     echo("rk.graph.off()\n");  
   } else {}
-  //// save result object
-  // read in saveobject variables
-  var hornSaveResults = getValue("hornSaveResults");
-  var hornSaveResultsActive = getValue("hornSaveResults.active");
-  var hornSaveResultsParent = getValue("hornSaveResults.parent");
-  // assign object to chosen environment
-  if(hornSaveResultsActive) {
-    echo(".GlobalEnv$" + hornSaveResults + " <- parallel.data\n");
+  if(!is_preview) {
+    //// save result object
+    // read in saveobject variables
+    var hornSaveResults = getValue("hornSaveResults");
+    var hornSaveResultsActive = getValue("hornSaveResults.active");
+    var hornSaveResultsParent = getValue("hornSaveResults.parent");
+    // assign object to chosen environment
+    if(hornSaveResultsActive) {
+      echo(".GlobalEnv$" + hornSaveResults + " <- parallel.data\n");
+    } else {}  
   } else {}
 
 }

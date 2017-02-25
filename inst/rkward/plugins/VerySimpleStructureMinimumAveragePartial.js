@@ -1,8 +1,6 @@
 // this code was generated using the rkwarddev package.
 // perhaps don't make changes here, but in the rkwarddev script instead!
 
-
-
 function preview(){
   preprocess(true);
   calculate(true);
@@ -11,7 +9,11 @@ function preview(){
 
 function preprocess(is_preview){
   // add requirements etc. here
-  echo("require(psych)\n");
+  if(is_preview) {
+    echo("if(!base::require(psych)){stop(" + i18n("Preview not available, because package psych is not installed or cannot be loaded.") + ")}\n");
+  } else {
+    echo("require(psych)\n");
+  }
 }
 
 function calculate(is_preview){
@@ -21,7 +23,6 @@ function calculate(is_preview){
   var vssNumObs = getString("vssNumObs");
   var vssRotate = getString("vssRotate");
   var vssMainTitle = getString("vssMainTitle");
-  var vssSaveResults = getString("vssSaveResults");
   var fitDiag = getBoolean("fitDiag.state");
   var connectDiffCplx = getBoolean("connectDiffCplx.state");
   var vssPlotResultsChecked = getBoolean("vssPlotResults.checked");
@@ -54,7 +55,6 @@ function printout(is_preview){
   var vssNumObs = getString("vssNumObs");
   var vssRotate = getString("vssRotate");
   var vssMainTitle = getString("vssMainTitle");
-  var vssSaveResults = getString("vssSaveResults");
   var fitDiag = getBoolean("fitDiag.state");
   var connectDiffCplx = getBoolean("connectDiffCplx.state");
   var vssPlotResultsChecked = getBoolean("vssPlotResults.checked");
@@ -62,9 +62,7 @@ function printout(is_preview){
   // printout the results
   if(!is_preview) {
     new Header(i18n("Very Simple Structure/Minimum Average Partial results")).print();  
-  } else {}
-
-  var vssPlotResultsChecked = getValue("vssPlotResults.checked");
+  } else {}  var vssPlotResultsChecked = getValue("vssPlotResults.checked");
   if(vssPlotResultsChecked) {
     
 
@@ -98,14 +96,16 @@ function printout(is_preview){
   echo("rk.print(paste(" + i18n("The Velicer MAP criterion achieves a minimum of ") + ", round(VSS.data[[\"map\"]][min.MAP], digits=3), " + i18n(" with ") + ", min.MAP, " + i18n(" factors.") + ", sep=\"\"))\n\n");
   new Header(i18n("Statistics"), 4).print();
   echo("rk.results(vss.stat.results)\n\n");
-  //// save result object
-  // read in saveobject variables
-  var vssSaveResults = getValue("vssSaveResults");
-  var vssSaveResultsActive = getValue("vssSaveResults.active");
-  var vssSaveResultsParent = getValue("vssSaveResults.parent");
-  // assign object to chosen environment
-  if(vssSaveResultsActive) {
-    echo(".GlobalEnv$" + vssSaveResults + " <- VSS.data\n");
+  if(!is_preview) {
+    //// save result object
+    // read in saveobject variables
+    var vssSaveResults = getValue("vssSaveResults");
+    var vssSaveResultsActive = getValue("vssSaveResults.active");
+    var vssSaveResultsParent = getValue("vssSaveResults.parent");
+    // assign object to chosen environment
+    if(vssSaveResultsActive) {
+      echo(".GlobalEnv$" + vssSaveResults + " <- VSS.data\n");
+    } else {}  
   } else {}
 
 }

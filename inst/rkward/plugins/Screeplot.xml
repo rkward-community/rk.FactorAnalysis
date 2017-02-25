@@ -25,7 +25,7 @@
           <spinbox label="Eigenvalue" id="eigenvalue" initial="1" min="0" />
         </frame>
         <stretch />
-        <preview />
+        <preview label="Preview" id="prv_Preview" />
       </column>
     </row>
   </dialog>

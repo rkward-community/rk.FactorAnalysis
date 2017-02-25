@@ -1,8 +1,6 @@
 // this code was generated using the rkwarddev package.
 // perhaps don't make changes here, but in the rkwarddev script instead!
 
-
-
 function preview(){
   preprocess(true);
   calculate(true);
@@ -11,7 +9,11 @@ function preview(){
 
 function preprocess(is_preview){
   // add requirements etc. here
-  echo("require(psych)\n");
+  if(is_preview) {
+    echo("if(!base::require(psych)){stop(" + i18n("Preview not available, because package psych is not installed or cannot be loaded.") + ")}\n");
+  } else {
+    echo("require(psych)\n");
+  }
 }
 
 function calculate(is_preview){
@@ -28,9 +30,7 @@ function printout(is_preview){
   // printout the results
   if(!is_preview) {
     new Header(i18n("Scree plot results")).print();  
-  } else {}
-
-  var horizLineChecked = getValue("horizLine.checked");
+  } else {}  var horizLineChecked = getValue("horizLine.checked");
   
 
   if(!is_preview) {
