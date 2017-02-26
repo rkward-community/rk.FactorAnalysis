@@ -1,5 +1,9 @@
 ChangeLog for package rk.FactorAnalysis
 
+changes in version 0.01-16 (2017-02-26)
+unreleased:
+  - under development
+
 changes in version 0.01-15 (2017-02-26)
 fixed:
   - fixed a missing comma in the printout code
