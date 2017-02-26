@@ -35,7 +35,7 @@
         <checkbox id="showLegend" label="Show legend" value="true" checked="true" />
         <stretch />
         <saveobject label="Save data to workspace" checkable="true" initial="parallel.data" id="hornSaveResults" />
-        <preview />
+        <preview label="Preview" id="prv_Preview" />
       </column>
     </row>
   </dialog>

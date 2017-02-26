@@ -1,0 +1,24 @@
+<!DOCTYPE rkplugin >
+<document>
+  <!-- this code was generated using the rkwarddev package.
+    perhaps don't make changes here, but in the rkwarddev script instead! -->
+  <code file="MeasureofSamplingAdequacyKaiserMeyerOlkin.js" />
+  <help file="MeasureofSamplingAdequacyKaiserMeyerOlkin.rkh" />
+  <!-- <dependencies>
+      </dependencies> -->
+  <logic>
+    <!-- <convert id="!edit!" sources="!edit!" mode="equals" standard="!edit!" /> -->
+    <!-- <connect governor="!edit!.state" client="!edit!.enabled" /> -->
+  </logic>
+  <dialog label="Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)">
+    <row id="row_vKMODSKMOD">
+      <varselector id="KMOData" label="Select data" />
+      <column id="clm_vKMODSCKMO">
+        <varslot id="KMODataSelected" label="Correlation matrix (or raw data matrix)" source="KMOData" required="true" />
+        <stretch />
+        <spinbox label="Show decimals" id="KMOshowDecimals" initial="3" min="0" max="20" type="integer" />
+        <saveobject label="Save results to workspace" checkable="true" initial="KMO.results" id="KMOSaveResults" />
+      </column>
+    </row>
+  </dialog>
+</document>

@@ -1,5 +1,7 @@
 # rk.FactorAnalysis
 
+[![Flattr this git repo](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=tfry&url=https://github.com/rkward-community/rk.FactorAnalysis&title=rk.FactorAnalysis&language=en_GB&tags=github&category=software)
+
 This R package provides a GUI to conduct principal component and factor analysis.
 
 ![Parallel analysis (Horn)](/inst/screenshots/parallel_analysis.png?raw=true "rk.FactorAnalysis: Parallel analysis")
@@ -28,7 +30,8 @@ To install it directly from GitHub, you can use `install_github()` from the [dev
 
 ```
 library(devtools)
-install_github("rkward-community/rk.FactorAnalysis")
+install_github("rkward-community/rk.FactorAnalysis") # stable release
+install_github("rkward-community/rk.FactorAnalysis", ref="develop") # development release
 ```
 
 You can safely ignore warnings about the (unavailable) package "rkward", it was installed together with RKWard.
@@ -36,7 +39,8 @@ You can safely ignore warnings about the (unavailable) package "rkward", it was 
 ## Contributing
 
 See http://api.kde.org/doc/rkwardplugins/ for documentation on writing plugins for RKWard.
-Contact rkward-devel@kde.org for help and requests.
+Please contact the [RKWard development mailing list](https://mail.kde.org/mailman/listinfo/rkward-devel)
+for help, reports and requests.
 
 - Submit pull requests or patches
 - Contact us to get write access
@@ -45,9 +49,13 @@ This plugin is built using the [rkwarddev](https://files.kde.org/rkward/R/pckg/r
 script file, located at `rk.FactorAnalysis/inst/rkward/rkwarddev_plugin_script_FA.R`. This script is written in `R` code and *generates*
 all of the other plugin files when run. Therefore, in case you'd like to add to this plugin, please add to this script file.
 
+### Branches
+
+Please note that all development happens in the `develop` branch. Pull requests against the `master` branch will be rejected, as it is reserved for the current stable release.
+
 ## Licence
 
-Copyright 2012-2015 Meik Michalke <meik.michalke@hhu.de>
+Copyright 2012-2017 Meik Michalke <meik.michalke@hhu.de>
 
 rk.FactorAnalysis is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

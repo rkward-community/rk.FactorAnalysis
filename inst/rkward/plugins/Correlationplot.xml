@@ -35,7 +35,7 @@
         <frame label="Show legend" checkable="true" id="crpltShowLegend">
           <spinbox label="Number of categories in legend" id="numCat" initial="10" min="1" type="integer" />
         </frame>
-        <preview />
+        <preview label="Preview" id="prv_Preview" />
       </column>
     </row>
   </dialog>

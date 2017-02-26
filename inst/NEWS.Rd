@@ -1,6 +1,28 @@
 \name{NEWS}
 \title{News for Package 'rk.FactorAnalysis'}
-\section{Changes in rk.FactorAnalysis version 0.01-14 (2015-06-29)}{
+\section{Changes in rk.FactorAnalysis version 0.01-15 (2017-02-26)}{
+  \subsection{fixed}{
+    \itemize{
+      \item fixed a missing comma in the printout code
+      \item fixed factor loadings highlighting (now also respects negative loadings)
+    }
+  }
+  \subsection{added}{
+    \itemize{
+      \item new dialog to calculate measure of sampling adequacy (MSA, Kaiser-Meyer-Olkin)
+    }
+  }
+  \subsection{changed}{
+    \itemize{
+      \item updated \code{rk.header()} code to newer style
+      \item the single script file was split into one file for each component
+      \item adjusted the generator script to implement the new preview approach,
+        using \code{"printout"} and dropping \code{"doPrintout"}
+      \item updated german tralsation
+    }
+  }
+}
+\section{Changes in rk.FactorAnalysis version 0.01-14 (2015-12-18)}{
   \subsection{added}{
     \itemize{
       \item plugin is now translatable (see inst/rkward/po/)

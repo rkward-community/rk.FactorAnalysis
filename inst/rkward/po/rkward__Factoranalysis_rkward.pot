@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://mail.kde.org/mailman/listinfo/kde-i18n-doc\n"
-"POT-Creation-Date: 2015-12-18 18:44+0100\n"
+"POT-Creation-Date: 2017-02-25 20:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,887 +25,995 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:19
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:19
 #. i18n: ectx: <about name="...">
 msgid "rk.FactorAnalysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:19
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:19
 #. i18n: ectx: <about shortinfo="...">
 msgid "RKWard GUI to conduct principal component and factor analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:28
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:28
 #. i18n: ectx: <about> <author given="...">
 msgctxt "Author name"
 msgid "Meik"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:28
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:28
 #. i18n: ectx: <about> <author family="...">
 msgctxt "Author name"
 msgid "Michalke"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:42
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:42
 #. i18n: ectx: <components> <component label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:13
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:13
 #. i18n: ectx: (Scree plot) <dialog label="...">
 msgid "Scree plot"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.js:36
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.js:13
+#. i18n: ectx: (Loaded from Scree plot)
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.js:13
+#. i18n: ectx: (Loaded from Correlation plot)
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.js:13
+#. i18n: ectx: (Loaded from Parallel analysis)
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:13
+#. i18n: ectx: (Loaded from VSS/MAP)
+msgid ""
+"Preview not available, because package psych is not installed or cannot be "
+"loaded."
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.js:32
 #. i18n: ectx: (Loaded from Scree plot)
 msgid "Scree plot results"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:15
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:15
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <varselector label="...">
 msgid "Select data.frame"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:17
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:17
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <varslot label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:17
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:17
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <varslot label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:17
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:17
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <varslot label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:30
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:35
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:30
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="...">
 msgid "Data"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:18
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:18
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <input label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:34
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:34
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <input label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:18
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:18
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <input label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:34
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:34
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <frame label="Plot results"> <input label="...">
 msgid "Main title"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:19
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:19
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <radio label="...">
 msgid "Draw scree for"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:20
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:20
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <radio label="Draw scree for"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:20
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:20
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <radio label="Show Eigenvalues for"> <option label="...">
 msgid "Factors and components"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:21
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:21
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <radio label="Draw scree for"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:21
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:21
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <radio label="Show Eigenvalues for"> <option label="...">
 msgid "Factors only"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:22
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:22
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <radio label="Draw scree for"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:22
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:22
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <radio label="Show Eigenvalues for"> <option label="...">
 msgid "Prinicipal components only"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:24
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:24
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <frame label="...">
 msgid "Horizontal line"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:25
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:25
 #. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <frame label="Horizontal line"> <spinbox label="...">
 msgid "Eigenvalue"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:49
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Screeplot.xml:28
+#. i18n: ectx: (Scree plot) <dialog label="Scree plot"> <preview label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:38
+#. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <preview label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:38
+#. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <preview label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:36
+#. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <frame label="Plot results"> <preview label="...">
+msgid "Preview"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:49
 #. i18n: ectx: <components> <component label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.js:39
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.js:35
 #. i18n: ectx: (Loaded from Correlation plot)
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:13
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:13
 #. i18n: ectx: (Correlation plot) <dialog label="...">
 msgid "Correlation plot"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:15
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:15
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <varselector label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:32
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.xml:15
+#. i18n: ectx: (Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)) <dialog label="Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)"> <varselector label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:32
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <varselector label="...">
 msgid "Select data"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:17
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:17
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <varslot label="...">
 msgid "Data (correlation/factor matrix)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:18
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:18
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <radio label="...">
 msgid "Colors"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:19
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:19
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <radio label="Colors"> <option label="...">
 msgid "Red to Blue"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:20
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:20
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <radio label="Colors"> <option label="...">
 msgid "Greyscale"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:22
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:22
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <frame label="...">
 msgid "Range of correlation values to color"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:25
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:25
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <frame label="Range of correlation values to color"> <spinbox label="...">
 msgid "from"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:28
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:28
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <frame label="Range of correlation values to color"> <spinbox label="...">
 msgid "to"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:32
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:32
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <spinbox label="...">
 msgid "Number of shades"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:35
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:35
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <frame label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:35
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:35
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <checkbox label="...">
 msgid "Show legend"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:36
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Correlationplot.xml:36
 #. i18n: ectx: (Correlation plot) <dialog label="Correlation plot"> <frame label="Show legend"> <spinbox label="...">
 msgid "Number of categories in legend"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:56
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:56
 #. i18n: ectx: <components> <component label="...">
 msgid "Parallel analysis (Horn)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.js:41
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.js:36
 #. i18n: ectx: (Loaded from Parallel analysis)
 msgid "Parallel analysis (Horn) results"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:13
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:13
 #. i18n: ectx: (Parallel analysis) <dialog label="...">
 msgid "Parallel analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:15
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:15
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <varselector label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:15
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:15
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <varselector label="...">
 msgid "Select data.frame/matrix"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:19
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:19
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <radio label="...">
 msgid "Show Eigenvalues for"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:24
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:24
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <dropdown label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:18
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:18
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:174
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:172
 #. i18n: ectx: (Loaded from Factor analysis)
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:38
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:38
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <radio label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:86
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:86
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <dropdown label="...">
 msgid "Factoring method"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:25
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:25
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <dropdown label="Factoring method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:87
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:87
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Factoring method"> <option label="...">
 msgid "Minimum residual (ULS)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:26
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:26
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <dropdown label="Factoring method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:88
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:88
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Factoring method"> <option label="...">
 msgid "Weighted least squares (WLS)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:27
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:27
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <dropdown label="Factoring method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:89
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:89
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Factoring method"> <option label="...">
 msgid "Generalized weighted least squares (GLS)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:28
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:28
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <dropdown label="Factoring method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:90
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:90
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Factoring method"> <option label="...">
 msgid "Principal axis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:29
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:29
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <dropdown label="Factoring method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:91
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:91
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Factoring method"> <option label="...">
 msgid "Maximum likelihood"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:31
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:31
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <spinbox label="...">
 msgid "Number of observations (0 implies raw data)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:32
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:32
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <spinbox label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:154
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:154
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <frame label="Perform bootstrap iterations"> <spinbox label="...">
 msgid "Number of iterations"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:33
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:33
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <checkbox label="...">
 msgid "Estimate communalities by SMCs"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:34
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:34
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <checkbox label="...">
 msgid "Plot error bars"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:37
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/ParallelanalysisHorn.xml:37
 #. i18n: ectx: (Parallel analysis) <dialog label="Parallel analysis"> <saveobject label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:38
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:38
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <saveobject label="...">
 msgid "Save data to workspace"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:63
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:63
 #. i18n: ectx: <components> <component label="...">
 msgid "Very Simple Structure/Minimum Average Partial"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:70
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:64
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid "Very Simple Structure/Minimum Average Partial results"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:101
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:93
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid "Very Simple Structure"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:102
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:94
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid "VSS complexity 1 achieves a maximimum of "
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:102
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:94
 #. i18n: ectx: (Loaded from VSS/MAP)
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:104
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:96
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid " with "
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:102
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:94
 #. i18n: ectx: (Loaded from VSS/MAP)
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:104
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:96
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid " factors."
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:102
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:94
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid "VSS complexity 2 achieves a maximimum of "
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:103
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:95
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid "Minimum Average Partial"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:104
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:96
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid "The Velicer MAP criterion achieves a minimum of "
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:105
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.js:97
 #. i18n: ectx: (Loaded from VSS/MAP)
 msgid "Statistics"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:13
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:13
 #. i18n: ectx: (VSS/MAP) <dialog label="...">
 msgid "VSS/MAP"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:19
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:19
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Factoring method"> <option label="...">
 msgid "Minimum residual factoring (ULS)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:20
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:20
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Factoring method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:39
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:39
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Factoring method"> <option label="...">
 msgid "Principal component analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:21
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:21
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Factoring method"> <option label="...">
 msgid "Principal axis factor analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:22
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:22
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Factoring method"> <option label="...">
 msgid "Maximum likelihood factor analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:24
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:24
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <spinbox label="...">
 msgid "Number of observations"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:25
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:25
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:60
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:60
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <dropdown label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:69
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:69
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <dropdown label="...">
 msgid "Rotation method"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:26
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:26
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Rotation method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:70
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:70
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "None"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:27
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:27
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Rotation method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:71
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:71
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Varimax (orthogonal)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:28
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:28
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Rotation method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:76
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:76
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Promax"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:29
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:29
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <dropdown label="Rotation method"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:77
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:77
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Oblimin"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:31
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:31
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <checkbox label="...">
 msgid "Fit the diagonal as well"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:33
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:33
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <frame label="...">
 msgid "Plot results"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:35
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/VerySimpleStructureMinimumAveragePartial.xml:35
 #. i18n: ectx: (VSS/MAP) <dialog label="VSS/MAP"> <frame label="Plot results"> <checkbox label="...">
 msgid "Connect different complexities"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:70
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:70
 #. i18n: ectx: <components> <component label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:28
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.xml:13
+#. i18n: ectx: (Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)) <dialog label="...">
+msgid "Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:27
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgctxt "R code comment"
+msgid "Function to round values"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:29
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgctxt "R code comment"
+msgid "Function to add some hints regarding interpretation"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:30
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "unacceptable"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:30
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "marvelous"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:30
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "mertitourious"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:30
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "middling"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:30
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "medicore"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:30
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "miserable"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:31
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgctxt "R code comment"
+msgid "Nice format for output"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:35
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "Kaiser-Meyer-Olkin Factor Adequacy"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:37
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "Overall Measure of Sampling Adequacy"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.js:39
+#. i18n: ectx: (Loaded from Measure of Sampling Adequacy (Kaiser-Meyer-Olkin))
+msgid "Measure of Sampling Adequacy per Item"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.xml:17
+#. i18n: ectx: (Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)) <dialog label="Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)"> <varslot label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:35
+#. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <varslot label="...">
+msgid "Correlation matrix (or raw data matrix)"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.xml:19
+#. i18n: ectx: (Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)) <dialog label="Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)"> <spinbox label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:171
+#. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <frame label="Output"> <spinbox label="...">
+msgid "Show decimals"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/MeasureofSamplingAdequacyKaiserMeyerOlkin.xml:20
+#. i18n: ectx: (Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)) <dialog label="Measure of Sampling Adequacy (Kaiser-Meyer-Olkin)"> <saveobject label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:51
+#. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <saveobject label="...">
+msgid "Save results to workspace"
+msgstr ""
+
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:77
+#. i18n: ectx: <components> <component label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:28
 #. i18n: ectx: (Factor analysis) <dialog label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:29
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:29
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:83
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:90
 #. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:99
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:106
 #. i18n: ectx: <hierarchy> <menu label="Plots"> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:110
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:117
 #. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:126
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:133
 #. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:142
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:149
+#. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:160
 #. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="...">
 msgid "Factor analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:134
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:132
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Make matrix from loadings, for more flexible output"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:136
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:134
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Nicen component names"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:144
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:142
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "For printout, highlight loadings"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:146
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:144
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Append communality and uniqueness"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:147
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:145
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "communality"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:147
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:145
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "uniqueness"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:148
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:146
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Append sum of squared loadings"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:154
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:152
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Variance explained"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:155
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:153
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Sum of squared loadings"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:155
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:153
 #. i18n: ectx: (Loaded from Factor analysis)
 #, no-c-format
 msgid "Variance explained (%)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:155
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:153
 #. i18n: ectx: (Loaded from Factor analysis)
 #, no-c-format
 msgid "Variance explained (cum %)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:156
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:154
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Finally, make it a data.frame"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:159
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:157
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Prepare correlation matrix for printout"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:162
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:160
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Prepare score*factors matrix for printout"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:163
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:161
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Correlation of scores with factors"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:163
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:161
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Multiple R square of scores with factors"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:163
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:161
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Minimum correlation of possible factor scores"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:164
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:162
 #. i18n: ectx: (Loaded from Factor analysis)
 msgctxt "R code comment"
 msgid "Ok, here the actual output starts"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:166
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:164
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Principal Component Analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:168
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:166
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Factor Analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:172
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:170
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Number of components"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:172
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:170
 #. i18n: ectx: (Loaded from Factor analysis)
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:174
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:172
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Rotation"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:174
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:172
 #. i18n: ectx: (Loaded from Factor analysis)
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:87
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:94
 #. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="Factor analysis"> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:114
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:121
 #. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="Factor analysis"> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:130
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:137
 #. i18n: ectx: <hierarchy> <menu label="Analysis"> <menu label="Factor analysis"> <menu label="...">
 msgid "Number of factors"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:176
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:174
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Normalization"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:180
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:178
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Degrees of freedom"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:180
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:178
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Fit"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:180
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:178
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Fit (off diag)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:181
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:179
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Loadings"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:184
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:182
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Factor correlations"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:187
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.js:185
 #. i18n: ectx: (Loaded from Factor analysis)
 msgid "Measures of factor score adequacy"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:35
-#. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <varslot label="...">
-msgid "Correlation matrix (or raw data matrix)"
-msgstr ""
-
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:40
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:40
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Factoring method"> <option label="...">
 msgid "Exploratory factor analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:44
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:44
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <radio label="...">
 msgid "Correlation method"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:45
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:45
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Correlation method"> <option label="...">
 msgid "Pearson product-moment (numeric data)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:46
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:46
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Correlation method"> <option label="...">
 msgid "Polychoric (polytomous data)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:49
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:49
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <spinbox label="...">
 msgid "Number of factors to extract"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:51
-#. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Data"> <saveobject label="...">
-msgid "Save results to workspace"
-msgstr ""
-
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:55
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:55
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="...">
 msgid "Options"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:61
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:61
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "none"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:62
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:62
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "varimax (orthogonal)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:63
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:63
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "quatimax (orthogonal)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:64
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:64
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "promax"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:65
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:65
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "oblimin"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:66
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:66
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "simplimax"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:67
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:67
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "cluster"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:72
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:72
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Quatimax (orthogonal)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:73
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:73
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "BentlerT (orthogonal)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:74
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:74
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "GeominT (orthogonal)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:75
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:75
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Bifactor (orthogonal)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:78
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:78
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Simplimax"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:79
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:79
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "BentlerQ"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:80
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:80
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "GeominQ"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:81
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:81
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Biquartimin"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:82
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:82
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Rotation method"> <option label="...">
 msgid "Cluster"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:97
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:97
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <radio label="...">
 msgid "Initial communality estimate"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:98
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:98
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Initial communality estimate"> <option label="...">
 msgid "Squared multiple correlations"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:99
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:99
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Initial communality estimate"> <option label="...">
 msgid "1"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:103
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:103
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <radio label="...">
 msgid "Matrix to factor"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:104
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:104
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Matrix to factor"> <option label="...">
 msgid "Factor correlation matrix"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:105
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:105
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Matrix to factor"> <option label="...">
 msgid "Factor covariance matrix"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:109
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:109
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <radio label="...">
 msgid "Matrix to score"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:110
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:110
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Matrix to score"> <option label="...">
 msgid "Scores based on structure matrix (oblique)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:111
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:111
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <radio label="Matrix to score"> <option label="...">
 msgid "Scores based on pattern matrix"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:118
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:118
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <checkbox label="...">
 msgid "Show residuals"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:121
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:121
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <checkbox label="...">
 msgid "Apply Kaiser normalization"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:125
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:125
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <frame label="...">
 msgid "Find component scores"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:126
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:126
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <frame label="Find component scores"> <dropdown label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:143
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:143
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <dropdown label="...">
 msgid "Dealing with missing values"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:127
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:127
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Dealing with missing values"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:144
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:144
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Dealing with missing values"> <option label="...">
 msgid "Don't impute missing values"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:128
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:128
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Dealing with missing values"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:145
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:145
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Dealing with missing values"> <option label="...">
 msgid "Replace with median"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:129
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:129
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Dealing with missing values"> <option label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:146
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:146
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Dealing with missing values"> <option label="...">
 msgid "Replace with mean"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:134
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:134
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <dropdown label="...">
 msgid "Method to find factor scores"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:135
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:135
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Method to find factor scores"> <option label="...">
 msgid "Regression"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:136
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:136
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Method to find factor scores"> <option label="...">
 msgid "Simple regression (Thurstone)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:137
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:137
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Method to find factor scores"> <option label="...">
 msgid "correlation preserving (ten Berge)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:138
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:138
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Method to find factor scores"> <option label="...">
 msgid "Anderson"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:139
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:139
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <dropdown label="Method to find factor scores"> <option label="...">
 msgid "Bartlett"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:150
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:150
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <spinbox label="...">
 msgid "Number of observations to find the correlation matrix (GoF statistics)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:151
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:151
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <frame label="...">
 msgid "Perform bootstrap iterations"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:157
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:157
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <frame label="Perform bootstrap iterations"> <spinbox label="...">
 msgid "Until change in communalities is less than"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:160
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:160
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <frame label="Perform bootstrap iterations"> <spinbox label="...">
 msgid "Maximum number of iterations"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:165
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:165
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> <tabbook label="Factor analysis"> <tab label="Options"> <frame label="...">
 msgid "Output"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:168
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:168
 #. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <frame label="Output"> <spinbox label="...">
 msgid "Marker item threshold (cut-off)"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/plugins/Factoranalysis.xml:171
-#. i18n: ectx: (Factor analysis) <dialog label="Factor analysis"> [...] <frame label="Output"> <spinbox label="...">
-msgid "Show decimals"
-msgstr ""
-
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:79
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:86
 #. i18n: ectx: <hierarchy> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:106
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:113
 #. i18n: ectx: <hierarchy> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:122
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:129
 #. i18n: ectx: <hierarchy> <menu label="...">
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:138
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:145
+#. i18n: ectx: <hierarchy> <menu label="...">
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:156
 #. i18n: ectx: <hierarchy> <menu label="...">
 msgid "Analysis"
 msgstr ""
 
-#. i18n: file: /home/m/daten/R/rkward_plugins/git//rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:95
+#. i18n: file: /home/m/daten/R/rkward_plugins/git/rk.FactorAnalysis/inst/rkward/rk.FactorAnalysis.pluginmap:102
 #. i18n: ectx: <hierarchy> <menu label="...">
 msgid "Plots"
 msgstr ""

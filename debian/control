@@ -10,6 +10,7 @@ Package: r-other-rkward-rk.factoranalysis
 Architecture: all
 Section: math
 Depends: r-base (>= 3.2.0), rkward (>= 0.6.0)
-Description: GNU R package: RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis.
+Description: GNU R package: RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes
+ dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis.
 Homepage: https://rkward.kde.org
 Suggests: r-cran-psych (>= 1.1.10)

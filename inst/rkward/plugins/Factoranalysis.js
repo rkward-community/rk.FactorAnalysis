@@ -4,19 +4,19 @@
 // define variables globally
 var isObrot;
 
-function preprocess(){
+
+
+function preprocess(is_preview){
   // add requirements etc. here
   echo("require(psych)\n");
 }
 
-function calculate(){
+function calculate(is_preview){
   // read in variables from dialog
-  
   var dataSelected = getString("dataSelected");
   var factorMethod = getString("factorMethod");
   var corrMethod = getString("corrMethod");
   var numFactors = getString("numFactors");
-  var saveResults = getString("saveResults");
   var rotationMethodPCA = getString("rotationMethodPCA");
   var rotationMethodEFA = getString("rotationMethodEFA");
   var factorMethodEFA = getString("factorMethodEFA");
@@ -118,10 +118,8 @@ function calculate(){
   echo(")\n\n");
 }
 
-function printout(){
+function printout(is_preview){
   // printout the results
-
-
   var factorMethod = getValue("factorMethod");
   var numFactors = getValue("numFactors");
   var rotationMethodPCA = getValue("rotationMethodPCA");
@@ -142,9 +140,9 @@ function printout(){
   }
   echo(", 1:length(FA.load.names[[2]]))\n  FA.load <- FA.results$loadings[!is.character(FA.results$loadings)]\n  FA.load.mtx <- matrix(FA.load, nrow=FA.load.dim[1], dimnames=FA.load.names)\n");
   comment("For printout, highlight loadings", "  ");
-  echo("\tidx.load <- FA.load >= " + cutoff + "\n  FA.load.print <- digits(FA.load)\n  FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")\n  FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)\n");
+  echo("\tidx.load <- abs(FA.load) >= " + cutoff + "\n  FA.load.print <- digits(FA.load)\n  FA.load.print[idx.load] <- paste(\"<b>\", FA.load.print[idx.load], \"</b>\", sep=\"\")\n  FA.load.print <- matrix(FA.load.print, nrow=FA.load.dim[1], dimnames=FA.load.names)\n");
   comment("Append communality and uniqueness", "  ");
-  echo("\tFA.load.print <- cbind(FA.load.print,\n\t\t" + i18n("communality") + "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\")\n\t\t" + i18n("uniqueness") + "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n");
+  echo("\tFA.load.print <- cbind(FA.load.print,\n\t\t" + i18n("communality") + "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$communality), \"</span>\", sep=\"\"),\n\t\t" + i18n("uniqueness") + "=paste(\"<span style=\\\"color:grey;\\\">\", digits(FA.results$uniquenesses), \"</span>\", sep=\"\"))\n");
   comment("Append sum of squared loadings", "  ");
   if(isObrot) {
     echo("\tFA.s2load <- diag(FA.results$Phi %*% t(FA.results$loadings) %*% FA.results$loadings)\n");  
@@ -169,11 +167,11 @@ function printout(){
   }
   echo(",\n\tparameters=list(\n");
   if(factorMethod == "PCA") {
-    echo("\t\t" + i18n("Number of components") + ", " + numFactors + ",\n" + "\t\t" + i18n("Rotation") + ", \"" + rotationMethodPCA + "\"");  
+    echo("\t\t" + i18n("Number of components") + "=" + numFactors + ",\n" + "\t\t" + i18n("Rotation") + "=\"" + rotationMethodPCA + "\"");  
   } else {
-    echo("\t\t" + i18n("Number of factors") + ", " + numFactors + ",\n" + "\t\t" + i18n("Factoring method") + ", \"" + factorMethodEFA + "\",\n" + "\t\t" + i18n("Rotation") + ", \"" + rotationMethodEFA + "\"");  
+    echo("\t\t" + i18n("Number of factors") + "=" + numFactors + ",\n" + "\t\t" + i18n("Factoring method") + "=\"" + factorMethodEFA + "\",\n" + "\t\t" + i18n("Rotation") + "=\"" + rotationMethodEFA + "\"");  
     if(kaiser) {
-      echo(",\n\t\t" + i18n("Normalization") + ", \"Kaiser\"");  
+      echo(",\n\t\t" + i18n("Normalization") + "=\"Kaiser\"");  
     } else {}  
   }
   echo("))\n");
