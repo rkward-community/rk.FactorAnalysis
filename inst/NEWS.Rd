@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package 'rk.FactorAnalysis'}
-\section{Changes in rk.FactorAnalysis version 0.01-15 (2017-02-26)}{
+\encoding{UTF-8}
+\section{Changes in rk.FactorAnalysis version 0.01-16 (2022-05-03)}{
+  \subsection{fixed}{
+    \itemize{
+      \item screenshot URL and removed flattr-link in README.md
+    }
+  }
+}
+\section{Changes in rk.FactorAnalysis version 0.01-15 (2017-02-25)}{
   \subsection{fixed}{
     \itemize{
       \item fixed a missing comma in the printout code
@@ -9,7 +17,8 @@
   }
   \subsection{added}{
     \itemize{
-      \item new dialog to calculate measure of sampling adequacy (MSA, Kaiser-Meyer-Olkin)
+      \item new dialog to calculate measure of sampling adequacy (MSA,
+        Kaiser-Meyer-Olkin)
     }
   }
   \subsection{changed}{
@@ -65,7 +74,8 @@
 \section{Changes in rk.FactorAnalysis version 0.01-10 (2013-02-24)}{
   \subsection{changed}{
     \itemize{
-      \item updated rkwarddev generator script (compatibility with 0.06-2) and regenerated plugin code
+      \item updated rkwarddev generator script (compatibility with 0.06-2) and
+        regenerated plugin code
     }
   }
 }

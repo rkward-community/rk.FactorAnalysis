@@ -1,11 +1,16 @@
 ChangeLog for package rk.FactorAnalysis
 
-changes in version 0.01-15 (2017-02-26)
+changes in version 0.01-16 (2022-05-03)
+fixed:
+  - screenshot URL and removed flattr-link in README.md
+
+changes in version 0.01-15 (2017-02-25)
 fixed:
   - fixed a missing comma in the printout code
   - fixed factor loadings highlighting (now also respects negative loadings)
 added:
-  - new dialog to calculate measure of sampling adequacy (MSA, Kaiser-Meyer-Olkin)
+  - new dialog to calculate measure of sampling adequacy (MSA,
+    Kaiser-Meyer-Olkin)
 changed:
   - updated rk.header() code to newer style
   - the single script file was split into one file for each component
@@ -37,7 +42,8 @@ fixed:
 
 changes in version 0.01-10 (2013-02-24)
 changed:
-  - updated rkwarddev generator script (compatibility with 0.06-2) and regenerated plugin code
+  - updated rkwarddev generator script (compatibility with 0.06-2) and
+    regenerated plugin code
 
 changes in version 0.01-9 (2012-10-08)
 fixed:
@@ -65,3 +71,4 @@ changes in version 0.01-6 (2012-04-07)
 changes:
   - added a ChangeLog file
   - rebuild package for R 2.15
+

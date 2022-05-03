@@ -2,28 +2,36 @@
 % Please edit documentation in R/rk.FactorAnalysis-package.R
 \docType{package}
 \name{rk.FactorAnalysis-package}
+\alias{rk.FactorAnalysis}
 \alias{rk.FactorAnalysis-package}
-\title{The rk.FactorAnalysis Package}
+\title{\packageTitle{rk.FactorAnalysis}}
 \description{
-RKWard GUI to conduct principal component and factor analysis.
+\packageDescription{rk.FactorAnalysis}
 }
 \details{
+The DESCRIPTION file:
 \tabular{ll}{
 Package: \tab rk.FactorAnalysis\cr
 Type: \tab Package\cr
-Version: \tab 0.01-15\cr
-Date: \tab 2017-02-25\cr
+Version: \tab 0.01-16\cr
+Date: \tab 2022-05-03\cr
 Depends: \tab rkward (>= 0.6.5)\cr
 Enhances: \tab rkward\cr
+Encoding: \tab UTF-8\cr
 License: \tab GPL (>= 3)\cr
 LazyLoad: \tab yes\cr
 URL: \tab https://rkward.kde.org\cr
 }
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://rkward.kde.org}
+}
 
-RKWard GUI to conduct principal component and factor analysis (using the psych package).
-Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis.
 }
 \author{
-Meik Michalke
+\packageAuthor{rk.FactorAnalysis}
+
+Maintainer: \packageMaintainer{rk.FactorAnalysis}
 }
-\keyword{package}
