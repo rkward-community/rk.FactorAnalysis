@@ -31,7 +31,7 @@ local({
     ),
     about=list(
       desc="RKWard GUI to conduct principal component and factor analysis",
-      version="0.01-16",
+      version="0.2-1",
       url="https://rkward.kde.org",
       long.desc="RKWard GUI to conduct principal component and factor analysis (using the psych package). Also includes dialogs for scree plots, correlation plots, VSS/MAP and parallel analysis."
     )
