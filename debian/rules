@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 # debian/rules file for the Debian/GNU Linux r-other-rkward-rk.factoranalysis package
-# Copyright 2017 by m.eik michalke <meik.michalke@hhu.de>
+# Copyright 2022 by m.eik michalke <meik.michalke@hhu.de>
 
 debRreposname := other-rkward
 
